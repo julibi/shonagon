@@ -54,8 +54,22 @@ app.get('/snu/:id', (req, res) => {
  }).catch((e) => { return res.status(400).send(); });
 });
 
-// app.delete();
-// app.put(); / app.patch(); ??
+app.delete('/snu/:id', (req, res) => {
+  var id = req.params.id;
+  if(!ObjectID.isValid(id)) {
+    return res.status(404).send();
+  }
+  Snu.findByIdAndRemove(id).then((snu) => {
+   if(!snu) {
+     return res.status(404).send();
+   }
+   // success
+   res.send(snu);
+  }).catch((e) => { return res.status(400).send(); });
+ });
+
+// app.patch(); 
+// HERE
 
 // Server Setup
 const port = process.env.PORT || 5000; 
