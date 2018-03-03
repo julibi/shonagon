@@ -22,7 +22,7 @@ var Snu = mongoose.model('Snu', {
   },
   createdAt: {
     type: Date,
-    required: false,
+    required: true,
   },
   modifiedAt: {
     type: Date,

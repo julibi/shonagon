@@ -3,6 +3,7 @@ const http = require('http');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const { ObjectID } = require('mongodb');
+const _ = require('lodash');
 // Creating server by creating an instance of express
 const app = express();
 
@@ -22,7 +23,9 @@ app.post('/snu', (req, res) => {
   var snu = new Snu({
     title: req.body.title,
     text: req.body.text,
-    keywords: req.body.keywords
+    keywords: req.body.keywords,
+    createdAt: new Date().getTime(),
+    modifiedAt: null
   });
 
   snu.save().then((doc) => {
@@ -42,11 +45,11 @@ app.get('/snu', (req, res) => {
 
 app.get('/snu/:id', (req, res) => {
  var id = req.params.id;
- if(!ObjectID.isValid(id)) {
+ if (!ObjectID.isValid(id)) {
    return res.status(404).send();
  }
  Snu.findById(id).then((snu) => {
-  if(!snu) {
+  if (!snu) {
     return res.status(404).send();
   }
   // success
@@ -56,20 +59,49 @@ app.get('/snu/:id', (req, res) => {
 
 app.delete('/snu/:id', (req, res) => {
   var id = req.params.id;
-  if(!ObjectID.isValid(id)) {
+
+  if (!ObjectID.isValid(id)) {
     return res.status(404).send();
   }
-  Snu.findByIdAndRemove(id).then((snu) => {
-   if(!snu) {
-     return res.status(404).send();
-   }
-   // success
-   res.send(snu);
-  }).catch((e) => { return res.status(400).send(); });
+
+  Snu.findByIdAndRemove(id)
+    .then((snu) => {
+    if (!snu) {
+      return res.status(404).send();
+    }
+    // success
+    res.send(snu);
+    })
+    .catch((e) => { return res.status(400).send(); });
  });
 
-// app.patch(); 
-// HERE
+app.patch('/snu/:id', (req, res) =>{
+  var id = req.params.id;
+  var body = _.pick(req.body, ['title', 'text', 'keywords', 'read', 'createdAt', 'modifiedAt']);
+
+  if (!ObjectID.isValid(id)) {
+    return res.status(404).send();
+  }
+
+  Snu.findByIdAndUpdate(id, 
+    { $set: {
+      title: body.title,
+      text: body.text,
+      keywords: body.keywords,
+      read: body.read,
+      modifiedAt: new Date().getTime()
+    } }, 
+    { new: true })
+    .then((snu) => {
+      if (!snu) {
+        return res.status(404).send();
+      }
+      res.send({ snu });
+    })
+    .catch((e) => {
+      res.status(400).send();
+    })
+}); 
 
 // Server Setup
 const port = process.env.PORT || 5000; 
