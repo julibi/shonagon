@@ -1,3 +1,1 @@
-module.exports = {
-  somekey: 'thisfor example'
-};
+something as a test
