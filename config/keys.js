@@ -1,3 +1,3 @@
 module.exports = {
-  somekey: 'Likethis'
+  somekey: 'thisfor example'
 };
