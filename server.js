@@ -111,7 +111,5 @@ server.listen(port);
 console.log('Server listening on port: ', port);
 
 // NEXT STEPS
-  // figure out how to gitignore the keys.js 
-  // create an mlab database
-  //connect the server to the database . also by pasting mongoURI into keys.js
+  // Find out prod database is not working
   
