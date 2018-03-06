@@ -15,10 +15,6 @@ app.use(morgan('combined')); //morgan is for loggin and debugging
 // app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); //for parsing incoming requests into json
 
-app.get('/', (req, res) => {
-  res.send({ hi: 'Heheee there you' });
-});
-
 app.post('/snu', (req, res) => {
   var snu = new Snu({
     title: req.body.title,

@@ -6,7 +6,7 @@ import ReduxPromise from 'redux-promise';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import rootReducer from './reducers';
 import './index.css';
-import Test from './components/Test';
+import ReadSingleSnuContainer from './components/ReadSingleSnu/ReadSingleSnuContainer';
 import registerServiceWorker from './registerServiceWorker';
 
 
@@ -22,7 +22,7 @@ const App = () => (
             </ul>
           </div>
           <div>
-            <Route exact path="/" component={Test} />
+            <Route exact path="/" component={ReadSingleSnuContainer} />
           </div>
         </div>
       </Router>
