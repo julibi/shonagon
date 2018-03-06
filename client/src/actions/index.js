@@ -3,7 +3,6 @@ import axios from 'axios';
 export const FETCH_SNUS = 'FETCH_SNUS';
 
 export function fetchSnus() {
-
 	const request = axios.get('/snu');
 
 	return {
@@ -11,6 +10,9 @@ export function fetchSnus() {
 		payload: request
 	};
 }
+
+//fetch FIRST RANDOM SNU
+//ONCLICK set the Snu to 'READ'
 
 // export function fetchPost(id) {
 
@@ -31,16 +33,4 @@ export function fetchSnus() {
 // 		type: CREATE_POST,
 // 		payload: request
 // 	};
-// }
-
-// export function deletePost(id, callback) {
-	
-// 	const request = axios.delete(`${ROOT_URL}/posts/${id}${API_KEY}`)
-// 		.then(()=> callback());
-// 	console.log(request);
-// 	return {
-// 		type: DELETE_POST,
-// 		payload: request
-// 	};
-
 // }
