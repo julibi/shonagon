@@ -2,14 +2,16 @@ const express = require('express');
 const http = require('http');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const { ObjectID } = require('mongodb');
+var cors = require('cors')
 const _ = require('lodash');
+const { ObjectID } = require('mongodb');
 // Creating server by creating an instance of express
 const app = express();
 
 const { mongoose } = require('./db/mongoose');
 const { Snu } = require('./models/snu');
 
+app.use(cors());
 // Middlewares
 app.use(morgan('combined')); //morgan is for loggin and debugging
 // app.use(bodyParser.urlencoded({ extended: true }));
