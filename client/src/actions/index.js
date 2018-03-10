@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export const FETCH_SNUS = 'FETCH_SNUS';
+export const FETCH_SNU = 'FETCH_SNU';
 export const SET_TO_READ = 'SET_TO_READ';
 export const CREATE_SNU = 'CREATE_SNU';
 
@@ -8,6 +9,14 @@ export function fetchSnus() {
 	const request = axios.get('/snu');
 	return {
 		type: FETCH_SNUS,
+		payload: request
+	};
+}
+
+export function fetchSnu(id) {
+	const request = axios.get(`/snu/${id}`);
+	return {
+		type: FETCH_SNU,
 		payload: request
 	};
 }

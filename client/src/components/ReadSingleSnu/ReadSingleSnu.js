@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import style from './ReadSingleSnu.css'
 
+import Typist from 'react-typist';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 export default class ReadSingleSnu extends Component {
 
   renderRandomFirstSnu() {
@@ -8,15 +11,18 @@ export default class ReadSingleSnu extends Component {
     if(randomFirstSnu) {
       return (
         <div>
-          <h3>{ randomFirstSnu.title }</h3>
-          <p>{ randomFirstSnu.text }</p>
-          <ul>{ randomFirstSnu.keywords.map((keyword, idx) => 
-            <li key={ idx }>
-              <button onClick={ () => this.handleNext(randomFirstSnu) }>
-                { keyword }
-              </button>
-            </li>) }
-          </ul>
+          <Typist cursor={ { show: false } }>{ randomFirstSnu.title }</Typist>
+          <ReactCSSTransitionGroup
+            transitionName="snu"
+            transitionAppear={ true }
+            transitionAppearTimeout={ 1000 }
+            transitionEnter={ false }
+            transitionLeave={ false }
+          >
+            <p>{ randomFirstSnu.text }</p>
+            <button>Some other</button>
+            <button onClick={ () => this.handleNext(randomFirstSnu) }>Done reading, next</button>
+          </ReactCSSTransitionGroup>
         </div>
       );
     }
@@ -26,6 +32,7 @@ export default class ReadSingleSnu extends Component {
   handleNext(snu) {
     const { createSnu, setToRead } = this.props;
     const id = snu._id; 
+    console.log('snu', snu);
     if (setToRead) {
       setToRead(id, snu);
     }
@@ -43,3 +50,11 @@ export default class ReadSingleSnu extends Component {
     );
   }
 }
+
+{/* <ul>{ randomFirstSnu.keywords.map((keyword, idx) => 
+            <li key={ idx }>
+              <button onClick={ () => this.handleNext(randomFirstSnu) }>
+                { keyword }
+              </button>
+            </li>) }
+          </ul> */}

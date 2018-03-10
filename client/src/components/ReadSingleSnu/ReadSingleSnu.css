@@ -1,3 +1,14 @@
 .App {
   text-align: center;
 }
+
+.snu-appear {
+  opacity: 0.1;
+  transform: translateY(120px);
+}
+
+.snu-appear .snu-appear-active {
+  opacity: 1;
+  transform: translateY(0px);
+  transition: all 1s ease-out;
+}
