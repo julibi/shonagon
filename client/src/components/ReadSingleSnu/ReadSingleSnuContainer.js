@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchSnus, fetchSnu, setToRead, createSnu } from '../../actions/index';
+import { fetchSnus, fetchSnu, setToRead, createSnu, enableKeywordsShowing } from '../../actions/index';
 import { unreadSnus, randomFirstSnu } from '../../selectors/index';
 import ReadSingleSnu from './ReadSingleSnu';
 
 class ReadSingleSnuContainer extends Component {
+
   componentWillMount() {
     this.props.fetchSnus();
   }
@@ -28,9 +29,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchSnus: () => dispatch(fetchSnus()),
-    fetchSnu: fetchSnu,
-    setToRead: setToRead,
-    createSnu: createSnu
+    fetchSnu,
+    setToRead,
+    createSnu,
+    enableKeywordsShowing
   }
 };
 

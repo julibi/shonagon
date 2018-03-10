@@ -1,9 +1,17 @@
 import axios from 'axios';
 
+export const ENABLE_KEYWORDS_SHOWING = 'ENABLE_KEYWORDS_SHOWING'; 
 export const FETCH_SNUS = 'FETCH_SNUS';
 export const FETCH_SNU = 'FETCH_SNU';
 export const SET_TO_READ = 'SET_TO_READ';
 export const CREATE_SNU = 'CREATE_SNU';
+
+export function enableKeywordsShowing() {
+  return {
+		type: ENABLE_KEYWORDS_SHOWING,
+		payload: { showKeywords:  true }
+	};
+}
 
 export function fetchSnus() {
 	const request = axios.get('/snu');

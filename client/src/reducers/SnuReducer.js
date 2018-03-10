@@ -1,5 +1,5 @@
 import { FETCH_SNUS, FETCH_SNU, SET_TO_READ, CREATE_SNU } from '../actions/index';
-import update from 'immutability-helper';
+// import update from 'immutability-helper';
 
 export default function(state = [], action) {
 	switch(action.type) {
