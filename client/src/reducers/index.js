@@ -4,7 +4,7 @@ import OwnReducer from './OwnReducer';
 
 const rootReducer = combineReducers({
   snus: SnusReducer,
-  candidate: OwnReducer
+  test: OwnReducer
 });
 
 export default rootReducer;

@@ -4,7 +4,7 @@ import { GET_SNUS_MATCHING_KEYWORD } from '../actions/index';
 export default function(state = [], action) {
 	switch(action.type) {
     case GET_SNUS_MATCHING_KEYWORD:
-      return [ ...state, ...action.payload.data ];
+      return [ ...action.payload.data ];
 		default: 
 			return state;
 	}

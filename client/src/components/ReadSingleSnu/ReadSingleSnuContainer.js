@@ -20,8 +20,7 @@ class ReadSingleSnuContainer extends Component {
 const mapStateToProps = (state) => {
   return {
     snus: state.snus,
-    randomFirstSnu: randomFirstSnu(state),
-    candidate: state.candidate
+    randomFirstSnu: randomFirstSnu(state)
   };
 }
 

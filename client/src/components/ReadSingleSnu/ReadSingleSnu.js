@@ -67,7 +67,7 @@ export default class ReadSingleSnu extends Component {
 
       const randomIndex = Math.floor(Math.random() * snu.keywords.length);
       const randomKeyword = snu.keywords[randomIndex];
-      console.log('This is the randomKeyword :', randomKeyword);
+
       getSnusMatchingKeyword(randomKeyword);
     } else {
         // IF IT DOESN'T dispatch the randomnext action (action II)
