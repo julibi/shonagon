@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import SnuReducer from './SnuReducer';
-import KeywordsReducer from './KeywordsReducer';
+import SnusReducer from './SnusReducer';
+import OwnReducer from './OwnReducer';
 
 const rootReducer = combineReducers({
-  snus: SnuReducer,
-  showKeywords: KeywordsReducer
+  snus: SnusReducer,
+  candidate: OwnReducer
 });
 
 export default rootReducer;

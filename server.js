@@ -17,7 +17,7 @@ app.use(morgan('combined')); //morgan is for loggin and debugging
 // app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); //for parsing incoming requests into json
 
-app.post('/snu', (req, res) => {
+app.post('/snus', (req, res) => {
   var snu = new Snu({
     title: req.body.title,
     text: req.body.text,
@@ -33,7 +33,7 @@ app.post('/snu', (req, res) => {
   });
 });
 
-app.get('/snu', (req, res) => {
+app.get('/snus', (req, res) => {
   Snu.find({}).then((doc) => {
     res.send(doc);
   }, (e) => {
@@ -41,7 +41,17 @@ app.get('/snu', (req, res) => {
   });
 });
 
-app.get('/snu/:id', (req, res) => {
+app.get('/snus/keyword/:keyword', (req, res) => {
+  var keyword = req.params.keyword;
+  Snu.find({ keywords: keyword, read: false })
+  .then((doc) => {
+    res.send(doc);    
+  }, (e) => {
+    res.status(400).send(e);
+  });
+});
+
+app.get('/snus/:id', (req, res) => {
  var id = req.params.id;
  if (!ObjectID.isValid(id)) {
    return res.status(404).send();
@@ -55,7 +65,7 @@ app.get('/snu/:id', (req, res) => {
  }).catch((e) => { return res.status(400).send(); });
 });
 
-app.delete('/snu/:id', (req, res) => {
+app.delete('/snus/:id', (req, res) => {
   var id = req.params.id;
 
   if (!ObjectID.isValid(id)) {
@@ -73,7 +83,7 @@ app.delete('/snu/:id', (req, res) => {
     .catch((e) => { return res.status(400).send(); });
  });
 
-app.patch('/snu/:id', (req, res) =>{
+app.patch('/snus/:id', (req, res) =>{
   var id = req.params.id;
   var body = _.pick(req.body, ['title', 'text', 'keywords', 'read', 'createdAt', 'modifiedAt']);
 
@@ -99,7 +109,7 @@ app.patch('/snu/:id', (req, res) =>{
     .catch((e) => {
       res.status(400).send();
     })
-}); 
+  }); 
 
 // Server Setup
 const port = process.env.PORT || 5000; 

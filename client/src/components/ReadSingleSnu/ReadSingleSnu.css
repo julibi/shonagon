@@ -12,3 +12,14 @@
   transform: translateY(0px);
   transition: all 1s ease-out;
 }
+
+.keywords-appear {
+  opacity: 0.1;
+  transform: translateY(120px);
+}
+
+.keywords-appear .keywords-appear-active {
+  opacity: 1;
+  transform: translateY(0px);
+  transition: all 1s ease-out;
+}
