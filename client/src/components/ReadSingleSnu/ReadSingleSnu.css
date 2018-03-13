@@ -23,3 +23,16 @@
   transform: translateY(0px);
   transition: all 1s ease-out;
 }
+/* this work*/
+p {
+  color: #fff;
+}
+
+/* this not. why? style-loader? webpack…*/
+
+img {
+  width: 100vw;
+  /* filter: blur(5px); */
+  z-index: -5;
+  position: fixed;
+}

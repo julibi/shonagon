@@ -1,29 +1,47 @@
 import React, { Component } from 'react';
 import style from './ReadSingleSnu.css'
 
+import Typist from 'react-typist';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 export default class ReadSingleSnu extends Component {
   constructor(props) {
     super(props);
     this.state = { showTitles: false };
   }
   renderRandomSnu() {
-    const { randomSnu, currentSnu } = this.props;
+    const { randomSnu } = this.props;
     const { showTitles } = this.state;
+    // preselect a keyword
+    // dispatch the action that searches for other keywords (action I)
 
-    // get rid of a randomSnu selector and create an action findOne(where read: false)
-    // but I also need some kind of action that empties this randomSnu -object
-
-    if(randomSnu || currentSnu) {
+    if(randomSnu) {
       return (
         <div>
-          <h3>{ randomSnu.title || currentSnu.title }</h3>
-              <p>{ randomSnu.text || currentSnu.text }</p>
+          <h3><Typist cursor={ { show: false } }>{ randomSnu.title }</Typist></h3>
+          <div className={ style.image }><img src={ require('./test.jpg') }/></div>
+            <ReactCSSTransitionGroup
+              transitionName="snu"
+              transitionAppear={ true }
+              transitionAppearTimeout={ 1000 }
+              transitionEnter={ false }
+              transitionLeave={ false }
+            >
+              <p className={ style.blaa }>{ randomSnu.text }</p>
+            </ReactCSSTransitionGroup>
           { !showTitles ? (
             <div>
               <button>Some other</button>
-              <button onClick={ () => this.handleDoneReading(randomSnu || currentSnu) }>Done reading, next</button>
+              <button onClick={ () => this.handleDoneReading(randomSnu) }>Done reading, next</button>
             </div>
           ) : (
+            <ReactCSSTransitionGroup
+              transitionName="keywords"
+              transitionAppear={ true }
+              transitionAppearTimeout={ 1000 }
+              transitionEnter={ false }
+              transitionLeave={ false }
+            >
             <div>
               <ul>{ this.props.keywordMatchingSnus.map((keywordMatchingSnu, idx) => 
                 <li key={ idx }>
@@ -33,10 +51,12 @@ export default class ReadSingleSnu extends Component {
                 </li>) }
               </ul> 
             </div>
-          ) }
+            </ReactCSSTransitionGroup>
+          )
+          }
         </div>
       );
-    } 
+    }
     return <div>Loading ...</div>
   }
 
@@ -82,3 +102,11 @@ export default class ReadSingleSnu extends Component {
     );
   }
 }
+
+{/* <ul>{ randomFirstSnu.keywords.map((keyword, idx) => 
+            <li key={ idx }>
+              <button onClick={ () => this.handleNext(randomFirstSnu) }>
+                { keyword }
+              </button>
+            </li>) }
+          </ul> */}

@@ -5,6 +5,15 @@ export const FETCH_SNU = 'FETCH_SNU';
 export const SET_TO_READ = 'SET_TO_READ';
 export const CREATE_SNU = 'CREATE_SNU';
 export const GET_SNUS_MATCHING_KEYWORD = 'GET_SNUS_MATCHING_KEYWORD';
+export const GET_UNREAD_SNUS = 'GET_UNREAD_SNUS';
+
+export function getUnreadSnus() {
+  const request = axios.get('/snus/unread');
+  return {
+    type: GET_UNREAD_SNUS,
+    payload: request
+  };
+}
 
 export function getSnusMatchingKeyword(keyword) {
   const request = axios.get(`/snus/keyword/${keyword}`);

@@ -51,6 +51,15 @@ app.get('/snus/keyword/:keyword', (req, res) => {
   });
 });
 
+app.get('/snus/unread', (req, res) => {
+  Snu.find({ read: false })
+  .then((doc) => {
+    res.send(doc);
+  }, (e) => {
+    res.status(400).send(e);
+  });
+});
+
 app.get('/snus/:id', (req, res) => {
  var id = req.params.id;
  if (!ObjectID.isValid(id)) {

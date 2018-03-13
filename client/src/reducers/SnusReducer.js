@@ -10,7 +10,7 @@ export default function(state = [], action) {
     case SET_TO_READ:
       return [ ...state, ...action.payload.data ];
     case CREATE_SNU:
-      return [...state, ...action.payload.data ];
+      return [ ...state, ...action.payload.data ];
 		default: 
 			return state;
 	}
