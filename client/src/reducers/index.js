@@ -2,13 +2,13 @@ import { combineReducers } from 'redux';
 import SnusReducer from './SnusReducer';
 import SnuReducer from './SnuReducer';
 import KeywordMatchingSnusReducer from './KeywordMatchingSnusReducer';
-import UnreadSnusReducer from './UnreadSnusReducer';
+import RandomSnuReducer from './RandomSnuReducer';
 
 const rootReducer = combineReducers({
   snus: SnusReducer,
   currentSnu: SnuReducer,
   keywordMatchingSnus: KeywordMatchingSnusReducer,
-  unreadSnus: UnreadSnusReducer
+  randomSnu: RandomSnuReducer
 });
 
 export default rootReducer;

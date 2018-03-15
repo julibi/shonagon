@@ -25,7 +25,7 @@
 }
 /* this work*/
 p {
-  color: #fff;
+  /* color: #fff; */
 }
 
 /* this not. why? style-loader? webpack…*/

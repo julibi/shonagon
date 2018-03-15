@@ -17,6 +17,16 @@ app.use(morgan('combined')); //morgan is for loggin and debugging
 // app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); //for parsing incoming requests into json
 
+app.patch('/snus/dev', (req, res) => {
+  Snu.find({}).then((snu) => {
+   if (!snu) {
+     return res.status(404).send();
+   }
+   // success
+   res.send({ snu });
+  }).catch((e) => { return res.status(400).send(); });
+ });
+
 app.post('/snus', (req, res) => {
   var snu = new Snu({
     title: req.body.title,
@@ -51,13 +61,20 @@ app.get('/snus/keyword/:keyword', (req, res) => {
   });
 });
 
-app.get('/snus/unread', (req, res) => {
-  Snu.find({ read: false })
-  .then((doc) => {
-    res.send(doc);
-  }, (e) => {
-    res.status(400).send(e);
-  });
+app.get('/snus/random', (req, res) => {
+  Snu.count().exec(function (err, count) {
+
+    // Get a random entry
+    var random = Math.floor(Math.random() * count)
+  
+    // Again query all snus but only fetch one offset by our random #
+    Snu.findOne({ read: false }).skip(random)
+      .then((doc) => {
+        res.send(doc);
+      }, (e) => {
+        res.status(400).send(e);
+      });
+  })
 });
 
 app.get('/snus/:id', (req, res) => {

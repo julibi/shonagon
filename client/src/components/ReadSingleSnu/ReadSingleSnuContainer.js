@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchSnus, fetchSnu, setToRead, createSnu, getSnusMatchingKeyword, getUnreadSnus } from '../../actions/index';
-import { randomSnu } from '../../selectors/index';
+import { fetchSnus, fetchSnu, setToRead, createSnu, getSnusMatchingKeyword, getRandomSnu } from '../../actions/index';
 import ReadSingleSnu from './ReadSingleSnu';
 
 class ReadSingleSnuContainer extends Component {
 
   componentWillMount() {
-    this.props.getUnreadSnus();
+    this.props.getRandomSnu();
   }
 
   render() {
@@ -20,8 +19,7 @@ class ReadSingleSnuContainer extends Component {
 const mapStateToProps = (state) => {
   return {
     snus: state.snus,
-    unreadSnus: state.unreadSnus,
-    randomSnu: randomSnu(state),
+    randomSnu: state.randomSnu,
     keywordMatchingSnus: state.keywordMatchingSnus,
     currentSnu: state.currentSnu.snu
   };
@@ -32,9 +30,9 @@ const mapDispatchToProps = (dispatch) => {
     fetchSnus: () => dispatch(fetchSnus()),
     fetchSnu: (id) => dispatch(fetchSnu(id)),
     getSnusMatchingKeyword: (keyword) => dispatch(getSnusMatchingKeyword(keyword)),
-    setToRead: (id) => dispatch(setToRead(id)),
+    setToRead: (id, snu) => dispatch(setToRead(id, snu)),
     createSnu: (object) => dispatch(fetchSnu(object)),
-    getUnreadSnus: () => dispatch(getUnreadSnus())
+    getRandomSnu: () => dispatch(getRandomSnu())
   }
 };
 

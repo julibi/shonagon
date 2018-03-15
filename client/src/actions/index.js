@@ -5,12 +5,13 @@ export const FETCH_SNU = 'FETCH_SNU';
 export const SET_TO_READ = 'SET_TO_READ';
 export const CREATE_SNU = 'CREATE_SNU';
 export const GET_SNUS_MATCHING_KEYWORD = 'GET_SNUS_MATCHING_KEYWORD';
-export const GET_UNREAD_SNUS = 'GET_UNREAD_SNUS';
+export const GET_RANDOM_SNU = 'GET_RANDOM_SNU';
 
-export function getUnreadSnus() {
-  const request = axios.get('/snus/unread');
+export function getRandomSnu() {
+  const request = axios.get('/snus/random');
+  console.log(request);
   return {
-    type: GET_UNREAD_SNUS,
+    type: GET_RANDOM_SNU,
     payload: request
   };
 }
