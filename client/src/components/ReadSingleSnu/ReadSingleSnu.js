@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import style from './ReadSingleSnu.css'
+import './ReadSingleSnu.css';
 import { getRandomSnu } from '../../actions';
+
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 export default class ReadSingleSnu extends Component {
   constructor(props) {
@@ -17,8 +19,8 @@ export default class ReadSingleSnu extends Component {
       return (
         <div>
           <div>
-            <h3>{ snu.title }</h3>
-                <p>{ snu.text }</p>
+            <h3 className="bla">{ snu.title }</h3>
+              <p>{ snu.text }</p>
           </div>    
           { !showTitles ? (
               <div>
@@ -83,6 +85,7 @@ export default class ReadSingleSnu extends Component {
 
   handleRandomSnu(snu) {
     const { setToRead, getRandomSnu } = this.props;
+
     setToRead(snu._id, snu);
     getRandomSnu();
   }
@@ -90,7 +93,7 @@ export default class ReadSingleSnu extends Component {
   render() {
     console.log(this.props);
     return (
-      <div className={style.App}>
+      <div>
         <div>{ this.renderSnu() }</div>
       </div>
     );

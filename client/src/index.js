@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import rootReducer from './reducers';
 import './index.css';
 import ReadSingleSnuContainer from './components/ReadSingleSnu/ReadSingleSnuContainer';
+import ReadSnusContainer from './components/ReadSnus/ReadSnusContainer';
 import registerServiceWorker from './registerServiceWorker';
 
 
@@ -17,12 +18,14 @@ const App = () => (
     <Router>
         <div>
           <div>
-            <ul>
+            <ul className="something">
               <li><NavLink to="/">Home</NavLink></li>
+              <li><NavLink to="/read">Already Read</NavLink></li>
             </ul>
           </div>
           <div>
             <Route exact path="/" component={ReadSingleSnuContainer} />
+            <Route exact path="/read" component={ReadSnusContainer} />
           </div>
         </div>
       </Router>

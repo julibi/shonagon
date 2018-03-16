@@ -13,19 +13,19 @@
   transition: all 1s ease-out;
 }
 
-.keywords-appear {
-  opacity: 0.1;
-  transform: translateY(120px);
-}
-
-.keywords-appear .keywords-appear-active {
-  opacity: 1;
-  transform: translateY(0px);
-  transition: all 1s ease-out;
-}
 /* this work*/
 p {
-  /* color: #fff; */
+  animation-name: snuText;
+  animation-duration: 4s;
+}
+
+@keyframes snuText {
+  from {
+    opacity: 0.1;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* this not. why? style-loader? webpack…*/
@@ -35,4 +35,9 @@ img {
   /* filter: blur(5px); */
   z-index: -5;
   position: fixed;
+}
+
+/*why does this not work?*/
+.bla {
+  background-color: red;
 }

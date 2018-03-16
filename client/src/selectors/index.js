@@ -1,9 +1,8 @@
 import { createSelector } from 'reselect';
 
-// then get one random one out of the unreadSnus
-// const randomSnu = 
-//   state => state.unreadSnus[Math.floor(Math.random() * state.unreadSnus.length)]
-// ;
+const readSnus = 
+  state => state.snus.filter(snu => snu.read === true)
+;
 
-// export { randomSnu };
+export { readSnus };
 
