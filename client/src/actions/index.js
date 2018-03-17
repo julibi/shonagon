@@ -6,10 +6,19 @@ export const SET_TO_READ = 'SET_TO_READ';
 export const CREATE_SNU = 'CREATE_SNU';
 export const GET_SNUS_MATCHING_KEYWORD = 'GET_SNUS_MATCHING_KEYWORD';
 export const GET_RANDOM_SNU = 'GET_RANDOM_SNU';
+export const GET_READ_SNUS = 'GET_READ_SNUS';
+
+
+export function getReadSnus() {
+  const request = axios.get('/snus/read');
+  return {
+    type: GET_READ_SNUS,
+    payload: request
+  };
+}
 
 export function getRandomSnu() {
   const request = axios.get('/snus/random');
-  console.log(request);
   return {
     type: GET_RANDOM_SNU,
     payload: request

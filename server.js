@@ -77,6 +77,16 @@ app.get('/snus/random', (req, res) => {
   })
 });
 
+app.get('/snus/read', (req, res) => {
+  Snu.find({ read: true })
+  .then((doc) => {
+    res.send(doc);
+  }, (e) => {
+    res.status(400).send(e);
+  }
+  );
+});
+
 app.get('/snus/:id', (req, res) => {
  var id = req.params.id;
  if (!ObjectID.isValid(id)) {

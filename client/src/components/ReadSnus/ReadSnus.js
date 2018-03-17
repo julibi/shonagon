@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
+import './ReadSnus.css';
 
 export default class ReadSnus extends Component {
 
   renderReadSnus() {
     return(
       <ul>
-      { this.props.unreadSnus.map((unreadSnu, idx) => 
-         <li key={idx}>
-           <div>
-            <h3>{ unreadSnu.title }</h3>
-            <p>{ unreadSnu.text }</p>
+      { this.props.readSnus.map((readSnu, idx) =>
+         <li
+            className="readSnu" 
+            key={idx}
+          >
+           <div className="test">
+            <h3>{ readSnu.title }</h3>
+            <p>{ readSnu.text.slice(0,40) + ' ...' }</p>
            </div>
          </li> 
         ) 
@@ -18,10 +22,12 @@ export default class ReadSnus extends Component {
     );
   }
 
+  // render multiple times. maybe just create an action creator?
+
   render() {
     return (
       <div>
-        <h3>Read Snus</h3>
+        <h2>READ SNUS</h2>
         { this.renderReadSnus() }
       </div>
     );

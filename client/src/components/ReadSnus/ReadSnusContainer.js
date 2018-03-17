@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchSnus } from '../../actions/index';
-import { readSnus } from '../../selectors/index';
+import { getReadSnus } from '../../actions/index';
 import ReadSnus from './ReadSnus';
 
 class ReadSingleSnuContainer extends Component {
 
   componentWillMount() {
-    this.props.fetchSnus();
+    this.props.getReadSnus();
   }
 
   render() {
@@ -20,13 +19,13 @@ class ReadSingleSnuContainer extends Component {
 const mapStateToProps = (state) => {
   return {
     snus: state.snus,
-    unreadSnus: readSnus(state)
+    readSnus: state.readSnus
   };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchSnus: () => dispatch(fetchSnus())
+    getReadSnus: () => dispatch(getReadSnus())
   }
 };
 

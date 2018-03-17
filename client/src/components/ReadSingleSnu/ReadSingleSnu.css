@@ -1,20 +1,7 @@
-.App {
-  text-align: center;
-}
-
-.snu-appear {
-  opacity: 0.1;
-  transform: translateY(120px);
-}
-
-.snu-appear .snu-appear-active {
-  opacity: 1;
-  transform: translateY(0px);
-  transition: all 1s ease-out;
-}
 
 /* this work*/
 p {
+  text-align: justify;
   animation-name: snuText;
   animation-duration: 4s;
 }
@@ -28,16 +15,42 @@ p {
   }
 }
 
-/* this not. why? style-loader? webpack…*/
-
-img {
-  width: 100vw;
-  /* filter: blur(5px); */
-  z-index: -5;
-  position: fixed;
+.title {
+  text-transform: uppercase;
+  margin: 2em 0;
 }
 
-/*why does this not work?*/
-.bla {
-  background-color: red;
+.text {
+  margin-bottom: 2em;
+}
+
+ul {
+  padding-left: 0;
+}
+
+button {
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: monospace;
+  font-size: 12px;
+  padding: 8px 16px;
+  text-decoration: none;
+  margin: 0.5em 0.5em 0.5em 0;
+  background-color: transparent;
+}
+
+.keywordsButton {
+  border: 2px solid #fff;
+  color: #ffffff;
+}
+
+.randomButton, .titlesButton  {
+  border: 2px solid #43C6AC;
+  color: #43C6AC;
+}
+
+.buttonsList {
+  list-style-type: none;
+  display: inline-block;
 }

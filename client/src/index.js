@@ -8,6 +8,7 @@ import rootReducer from './reducers';
 import './index.css';
 import ReadSingleSnuContainer from './components/ReadSingleSnu/ReadSingleSnuContainer';
 import ReadSnusContainer from './components/ReadSnus/ReadSnusContainer';
+import CreateSnuContainer from './components/CreateSnu/CreateSnuContainer';
 import registerServiceWorker from './registerServiceWorker';
 
 
@@ -17,15 +18,17 @@ const App = () => (
   <Provider store={createStoreWithMiddleware(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())}>
     <Router>
         <div>
-          <div>
-            <ul className="something">
+          <div className="navigation">
+            <ul>
               <li><NavLink to="/">Home</NavLink></li>
               <li><NavLink to="/read">Already Read</NavLink></li>
+              <li><NavLink to="/new">Create New</NavLink></li>
             </ul>
           </div>
           <div>
             <Route exact path="/" component={ReadSingleSnuContainer} />
             <Route exact path="/read" component={ReadSnusContainer} />
+            <Route exact path="/new" component={CreateSnuContainer} />
           </div>
         </div>
       </Router>

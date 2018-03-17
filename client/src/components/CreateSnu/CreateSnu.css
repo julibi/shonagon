@@ -1,0 +1,28 @@
+.form-group {
+  margin: 1em 0 1.5em 0;
+}
+
+.createSnu {
+  border: 2px solid #43C6AC;
+  color: #43C6AC;
+}
+
+.link {
+  text-decoration: none;
+  color: #fff;
+  margin-left: 1em;
+}
+
+
+input {
+  width: 300px;
+  border: none;
+  border-bottom: 2px solid #43C6AC;
+  background-color: transparent;
+  padding: 5px;
+}
+
+textarea:focus, input:focus {
+  outline: none;
+  box-shadow: 0 15px 20px rgba(76, 198, 172, 0.3); 
+}

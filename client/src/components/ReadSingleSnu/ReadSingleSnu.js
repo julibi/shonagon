@@ -19,21 +19,27 @@ export default class ReadSingleSnu extends Component {
       return (
         <div>
           <div>
-            <h3 className="bla">{ snu.title }</h3>
-              <p>{ snu.text }</p>
+            <h2 className="title">{ snu.title }</h2>
+              <p className="text">{ snu.text }</p>
           </div>    
           { !showTitles ? (
               <div>
-                <button onClick={ () => this.handleRandomSnu(snu) }>Some other</button>
-                <button onClick={ () => this.handleDoneReading(snu) }>Done reading, next</button>
+                <button className="keywordsButton" onClick={ () => this.handleRandomSnu(snu) }>Some other</button>
+                <button className="randomButton" onClick={ () => this.handleDoneReading(snu) }>Done reading, next</button>
               </div>
             ) : (
               <div>
                 <ul>{ this.props.keywordMatchingSnus.map((keywordMatchingSnu, idx) =>
                   { if (keywordMatchingSnu._id !== snu._id) {
                     return(
-                    <li key={ idx }>
-                      <button onClick={ () => this.fetchNextSnu(keywordMatchingSnu._id, snu._id, snu) }>
+                    <li 
+                      key={ idx }
+                      className="buttonsList"
+                    >
+                      <button
+                        className="titlesButton"
+                        onClick={ () => this.fetchNextSnu(keywordMatchingSnu._id, snu._id, snu) }
+                      >
                         { keywordMatchingSnu.title }
                       </button>
                     </li>)

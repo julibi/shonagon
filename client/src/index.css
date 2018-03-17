@@ -1,5 +1,36 @@
 body {
   margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+  padding: 3em;
+  font-family: monospace;
+  background: #000000;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+}
+
+.navigation ul {
+  list-style-type: none;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 1em;
+}
+
+.navigation ul li {
+  display: inline-block;
+  margin: 0 1.5em 0.5em 0;
+}
+
+.navigation ul li a {
+  text-decoration: none;
+  font-size: 1.3em;
+}
+
+.navigation ul li a:visited {
+  color: white;
+}
+
+@media only screen and (min-width: 414px) {
+  .navigation ul li {
+    margin: 0 1.5em 1.5em 0;
+    font-size: 1em;
+  }
 }
