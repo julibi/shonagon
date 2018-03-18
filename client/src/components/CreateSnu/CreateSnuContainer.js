@@ -50,7 +50,7 @@ class CreateSnuContainer extends Component {
         </div>
 
         <button className="createSnu" type="submit" disabled={pristine || submitting}>Submit</button>
-        <Link to="/" className="link">Cancel</Link>
+        <Link to="/" className="link"><button className="cancelButton">Cancel</button></Link>
       </form>
     );
   }

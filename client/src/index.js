@@ -9,6 +9,8 @@ import './index.css';
 import ReadSingleSnuContainer from './components/ReadSingleSnu/ReadSingleSnuContainer';
 import ReadSnusContainer from './components/ReadSnus/ReadSnusContainer';
 import CreateSnuContainer from './components/CreateSnu/CreateSnuContainer';
+import SignUpContainer from './components/SignUp/SignUpContainer';
+import LogInContainer from './components/LogIn/LogInContainer';
 import registerServiceWorker from './registerServiceWorker';
 
 
@@ -21,8 +23,10 @@ const App = () => (
           <div className="navigation">
             <ul>
               <li><NavLink to="/">Home</NavLink></li>
-              <li><NavLink to="/read">Already Read</NavLink></li>
+              <li><NavLink to="/read">History</NavLink></li>
               <li><NavLink to="/new">Create New</NavLink></li>
+              <li><SignUpContainer /></li>
+              <li><LogInContainer /></li>
             </ul>
           </div>
           <div>

@@ -27,7 +27,7 @@ export default class ReadSnus extends Component {
   render() {
     return (
       <div>
-        <h2>READ SNUS</h2>
+        <h2>History</h2>
         { this.renderReadSnus() }
       </div>
     );

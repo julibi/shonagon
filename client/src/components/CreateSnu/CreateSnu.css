@@ -3,8 +3,17 @@
 }
 
 .createSnu {
-  border: 2px solid #43C6AC;
-  color: #43C6AC;
+  border: none;
+  color: #fff;
+  background: #667db6;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #667db6, #0082c8, #0082c8, #667db6);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #667db6, #0082c8, #0082c8, #667db6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.cancelButton {
+  border: 1.5px dotted #fff;
+  background-color: transparent;
+  color: #fff;
 }
 
 .link {
@@ -17,7 +26,7 @@
 input {
   width: 300px;
   border: none;
-  border-bottom: 2px solid #43C6AC;
+  border-bottom: 2px solid #0082c8;
   background-color: transparent;
   padding: 5px;
 }
