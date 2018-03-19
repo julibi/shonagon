@@ -16,23 +16,25 @@ export default class ReadSingleSnu extends Component {
 
     if(currentSnu || randomSnu) {
       const snu = currentSnu || randomSnu;
+      const randomNr = Math.floor(Math.random() * 28) + 1;  
       return (
         <div>
           <div>
             <h2 className="title">{ snu.title }</h2>
+              {/* <img src={require(`../../assets/${randomNr}.png`)} /> */}
               <p className="text">{ snu.text }</p>
           </div>    
           { !showTitles ? (
-              <div>
-                <button className="keywordsButton" onClick={ () => this.handleRandomSnu(snu) }>Some other</button>
-                <button className="randomButton" onClick={ () => this.handleDoneReading(snu) }>Done reading, next</button>
-              </div>
+            <div>
+              <button className="keywordsButton" onClick={ () => this.handleRandomSnu(snu) }>Some other</button>
+              <button className="randomButton" onClick={ () => this.handleDoneReading(snu) }>Done reading, next</button>
+            </div>
             ) : (
               <div>
                 <ul>{ this.props.keywordMatchingSnus.map((keywordMatchingSnu, idx) =>
                   { if (keywordMatchingSnu._id !== snu._id) {
                     return(
-                    <li 
+                    <li
                       key={ idx }
                       className="buttonsList"
                     >

@@ -8,7 +8,7 @@ import rootReducer from './reducers';
 import './index.css';
 import ReadSingleSnuContainer from './components/ReadSingleSnu/ReadSingleSnuContainer';
 import ReadSnusContainer from './components/ReadSnus/ReadSnusContainer';
-import CreateSnuContainer from './components/CreateSnu/CreateSnuContainer';
+import { CreateSnuFormWithConnect } from './components/CreateSnu/CreateSnuContainer';
 import SignUpContainer from './components/SignUp/SignUpContainer';
 import LogInContainer from './components/LogIn/LogInContainer';
 import registerServiceWorker from './registerServiceWorker';
@@ -32,7 +32,7 @@ const App = () => (
           <div>
             <Route exact path="/" component={ReadSingleSnuContainer} />
             <Route exact path="/read" component={ReadSnusContainer} />
-            <Route exact path="/new" component={CreateSnuContainer} />
+            <Route exact path="/new" component={CreateSnuFormWithConnect} />
           </div>
         </div>
       </Router>
