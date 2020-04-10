@@ -1,64 +1,23 @@
 import React, { Component } from 'react';
 import './ReadSingleSnu.css';
 import { getRandomSnu } from '../../actions';
+import * as SNUS from '../../assets/snus.json';
+import Typewriter from './Typewriter';
 
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 export default class ReadSingleSnu extends Component {
   constructor(props) {
     super(props);
-    this.state = { showTitles: false };
+    this.state = { showTitles: false, text: '', firstSentence: '', firstLetter: '' };
   }
 
-  renderSnu() {
-    const { randomSnu, currentSnu } = this.props;
-    const { showTitles } = this.state;
-
-    if(currentSnu || randomSnu) {
-      const snu = currentSnu || randomSnu;
-      const randomNr = Math.floor(Math.random() * 28) + 1;  
-      return (
-        <div>
-          <div>
-            <h2 className="title">{ snu.title }</h2>
-              {/* <img src={require(`../../assets/${randomNr}.png`)} /> */}
-              <p className="text">{ snu.text }</p>
-          </div>    
-          { !showTitles ? (
-            <div>
-              <button className="keywordsButton" onClick={ () => this.handleRandomSnu(snu) }>Some other</button>
-              <button className="randomButton" onClick={ () => this.handleDoneReading(snu) }>Done reading, next</button>
-            </div>
-            ) : (
-              <div>
-                <ul>{ this.props.keywordMatchingSnus.map((keywordMatchingSnu, idx) =>
-                  { if (keywordMatchingSnu._id !== snu._id) {
-                    return(
-                    <li
-                      key={ idx }
-                      className="buttonsList"
-                    >
-                      <button
-                        className="titlesButton"
-                        onClick={ () => this.fetchNextSnu(keywordMatchingSnu._id, snu._id, snu) }
-                      >
-                        { keywordMatchingSnu.title }
-                      </button>
-                    </li>)
-                    } else {
-                      return
-                    }
-                  }
-                ) }
-                </ul> 
-              </div>
-            )
-          }
-        </div>
-      );
-    } else {
-      return <div>Loading...</div>;
-    }
+  componentDidMount() {
+    const text = SNUS.SNUS[0].text;
+    const firstSentence = SNUS.SNUS[0].beginning;
+    const firstLetter = firstSentence[0];
+    // console.log('text: ', text);
+    this.setState({ text, firstSentence, firstLetter });
   }
 
   handleDoneReading(snu) {
@@ -98,12 +57,37 @@ export default class ReadSingleSnu extends Component {
     getRandomSnu();
   }
 
-  render() {
-    console.log(this.props);
+  renderSNU() {
+    const { text, firstSentence, firstLetter} = this.state;
+
     return (
       <div>
-        <div>{ this.renderSnu() }</div>
+        <h1 className="fadeIn">Taxi</h1>
+        <div className="text">
+          <p>BLA</p>
+          {/* BLA */}
+        </div>
+      </div>
+    );
+  }
+
+  render() {
+    const { text, firstSentence, firstLetter} = this.state;
+    const shouldStart = (text.length && firstSentence.length && firstLetter.length);
+    
+    return (
+      <div>
+        { shouldStart ? <Typewriter className="typewriter">{ firstSentence }</Typewriter> : 'LOADING' }
       </div>
     );
   }
 }
+
+
+// TODO
+// know what the first sentence is, cut it out
+// know what the first letter is, cut that out too
+// THEN
+// first fade in the big letter
+// type out the first sentence
+// then fade in the rest

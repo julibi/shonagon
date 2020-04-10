@@ -1,39 +1,38 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { fetchSnus, fetchSnu, setToRead, createSnu, getSnusMatchingKeyword, getRandomSnu } from '../../actions/index';
-import ReadSingleSnu from './ReadSingleSnu';
+// import React, { Component } from 'react';
+// import { connect } from 'react-redux';
+// import { fetchSnus, fetchSnu, setToRead, getSnusMatchingKeyword, getRandomSnu } from '../../actions/index';
+// import ReadSingleSnu from './ReadSingleSnu';
 
-class ReadSingleSnuContainer extends Component {
+// class ReadSingleSnuContainer extends Component {
 
-  componentWillMount() {
-    this.props.getRandomSnu();
-  }
+//   componentWillMount() {
+//     this.props.getRandomSnu();
+//   }
 
-  render() {
-    return (
-      <ReadSingleSnu { ...this.props } />
-    );
-  }
-}
+//   render() {
+//     return (
+//       <ReadSingleSnu { ...this.props } />
+//     );
+//   }
+// }
 
-const mapStateToProps = (state) => {
-  return {
-    snus: state.snus,
-    randomSnu: state.randomSnu,
-    keywordMatchingSnus: state.keywordMatchingSnus,
-    currentSnu: state.currentSnu.snu
-  };
-}
+// const mapStateToProps = (state) => {
+//   return {
+//     snus: state.snus,
+//     randomSnu: state.randomSnu,
+//     keywordMatchingSnus: state.keywordMatchingSnus,
+//     currentSnu: state.currentSnu.snu
+//   };
+// }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchSnus: () => dispatch(fetchSnus()),
-    fetchSnu: (id) => dispatch(fetchSnu(id)),
-    getSnusMatchingKeyword: (keyword) => dispatch(getSnusMatchingKeyword(keyword)),
-    setToRead: (id, snu) => dispatch(setToRead(id, snu)),
-    createSnu: (object) => dispatch(fetchSnu(object)),
-    getRandomSnu: () => dispatch(getRandomSnu())
-  }
-};
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     fetchSnus: () => dispatch(fetchSnus()),
+//     fetchSnu: (id) => dispatch(fetchSnu(id)),
+//     getSnusMatchingKeyword: (keyword) => dispatch(getSnusMatchingKeyword(keyword)),
+//     setToRead: (id, snu) => dispatch(setToRead(id, snu)),
+//     getRandomSnu: () => dispatch(getRandomSnu())
+//   }
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ReadSingleSnuContainer);
+// export default connect(mapStateToProps, mapDispatchToProps)(ReadSingleSnuContainer);

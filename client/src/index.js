@@ -6,11 +6,9 @@ import ReduxPromise from 'redux-promise';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import rootReducer from './reducers';
 import './index.css';
-import ReadSingleSnuContainer from './components/ReadSingleSnu/ReadSingleSnuContainer';
+import ReadSingleSnuContainer from './components/ReadSingleSnu/ReadSingleSnu';
 import ReadSnusContainer from './components/ReadSnus/ReadSnusContainer';
 import { CreateSnuFormWithConnect } from './components/CreateSnu/CreateSnuContainer';
-import SignUpContainer from './components/SignUp/SignUpContainer';
-import LogInContainer from './components/LogIn/LogInContainer';
 import registerServiceWorker from './registerServiceWorker';
 
 
@@ -25,8 +23,6 @@ const App = () => (
               <li><NavLink to="/">Home</NavLink></li>
               <li><NavLink to="/read">History</NavLink></li>
               <li><NavLink to="/new">Create New</NavLink></li>
-              <li><SignUpContainer /></li>
-              <li><LogInContainer /></li>
             </ul>
           </div>
           <div>

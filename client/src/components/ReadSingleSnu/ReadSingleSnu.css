@@ -1,10 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@600&family=Noto+Sans+KR&display=swap');
 
-/* this work*/
-p {
-  text-align: justify;
-  animation-name: snuText;
+h1 {
+  font-size: 600px;
+  position: absolute;
+  z-index: 1;
+  margin: 0;
+  animation-name: fadeInTitle;
   animation-duration: 4s;
+  opacity: 0.2;
 }
+
+.text {
+  position: absolute;
+  z-index: 1;
+  white-space: pre-wrap;
+}
+
+
+.firstSentence {
+  font-family: 'EB Garamond', serif;
+}
+
+.text {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.typewriter {
+  width: 300px;
+}
+
 
 @keyframes snuText {
   from {
@@ -12,6 +36,15 @@ p {
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes fadeInTitle {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.2;
   }
 }
 
@@ -32,7 +65,7 @@ button {
   -webkit-border-radius: 28;
   -moz-border-radius: 28;
   border-radius: 28px;
-  font-family: monospace;
+  /* font-family: monospace; */
   font-size: 12px;
   padding: 8px 16px;
   text-decoration: none;

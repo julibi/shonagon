@@ -57,11 +57,11 @@ export function setToRead(id, snu) {
     }
 }
 
-export function createSnu(object) {
-  object.keywords = object.keywords.replace(/\s/g, '').split(',');
-  const request = axios.post('/snus', object);
-    return {
-      type: CREATE_SNU,
-      payload: request
-    };
-}
+// export function createSnu(object) {
+//   object.keywords = object.keywords.replace(/\s/g, '').split(',');
+//   const request = axios.post('/snus', object);
+//     return {
+//       type: CREATE_SNU,
+//       payload: request
+//     };
+// }
