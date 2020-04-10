@@ -1,60 +1,63 @@
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@600&family=Noto+Sans+KR&display=swap');
 
-h1 {
-  font-size: 600px;
+.snuTitle {
+  font-size: 500px;
   position: absolute;
   z-index: 1;
   margin: 0;
-  animation-name: fadeInTitle;
-  animation-duration: 4s;
-  opacity: 0.2;
+  animation-name: titleAnimation;
+  animation-duration: 3s;
+  opacity: 0.1;
 }
 
-.text {
-  position: absolute;
-  z-index: 1;
-  white-space: pre-wrap;
+.historiatedInitial {
+  font-size: 100px;
+  animation-name: fadeInInitial;
+  animation-duration: 1s;
 }
-
-
 .firstSentence {
   font-family: 'EB Garamond', serif;
 }
 
+.typedText {
+  font-size: 60px;
+}
+
 .text {
+  color: #ffffff;
+  white-space: pre-wrap;
   font-family: 'Noto Sans KR', sans-serif;
 }
 
-.typewriter {
-  width: 300px;
-}
-
-
-@keyframes snuText {
+@keyframes fadeInInitial {
   from {
-    opacity: 0.1;
+    opacity: 0;
   }
   to {
     opacity: 1;
   }
 }
 
-@keyframes fadeInTitle {
-  from {
+@keyframes titleAnimation {
+  0% {
     opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 0.1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes snuText {
+  from {
+    opacity: 0.1;
+    transform: translateY(-10%);
   }
   to {
-    opacity: 0.2;
+    opacity: 1;
+    transform: translateY(0);
   }
-}
-
-.title {
-  text-transform: uppercase;
-  margin: 2em 0;
-}
-
-.text {
-  margin-bottom: 2em;
 }
 
 ul {
