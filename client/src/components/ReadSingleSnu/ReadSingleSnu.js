@@ -3,6 +3,7 @@ import './ReadSingleSnu.css';
 import { getRandomSnu } from '../../actions';
 import * as SNUS from '../../assets/snus.json';
 import TypeWriter from './TypeWriter';
+import TitleAnimator from './TitleAnimator';
 
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
@@ -70,7 +71,7 @@ export default class ReadSingleSnu extends Component {
 
   presentTitle() {
     this.setState({ shouldPresentTitle: true });
-    setTimeout(() => this.presentFirstSentence(), 2000);
+    // setTimeout(() => this.presentFirstSentence(), 2000);
   } 
 
   presentFirstSentence() {
@@ -94,7 +95,7 @@ export default class ReadSingleSnu extends Component {
 
     return (
       <div>
-        { shouldPresentTitle && <h1 className="snuTitle">{title}</h1>}
+        { shouldPresentTitle && <TitleAnimator className="snuTitle">{'taxi'}</TitleAnimator>}
         { shouldPresentFirstSentence &&
           <TypeWriter
             initialClassName="historiatedInitial"
