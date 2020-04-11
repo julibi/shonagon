@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
+import classNames from 'classnames';
 import './TitleAnimator.css';
 
 export default class TitleAnimator extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      alphabet: 'abcdefghijklmnopqrstuvwxyzöäüß',
+      alphabet: 'SHANGHAISHONAGONAaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvXwXxYyZzÖöÄäÜüß',
       originalTitle: this.props.children,
       animatedTitle: '',
-      count: 0
+      count: 0,
+      isFinished: false
     };
   }
 
@@ -24,7 +26,10 @@ export default class TitleAnimator extends Component {
 
   changeLetter() {
     const { alphabet, originalTitle, animatedTitle, count } = this.state;
-    if (originalTitle === animatedTitle) return;
+    if (originalTitle === animatedTitle) {
+      this.setState({ isFinished: true });
+      return this.props.onFinish();
+    }
   
     const updatedAnimatedTitle =
       animatedTitle
@@ -40,9 +45,9 @@ export default class TitleAnimator extends Component {
 
   render() {
     const { className } = this.props;
-    const { animatedTitle } = this.state;
+    const { animatedTitle, isFinished } = this.state;
     return (
-      <h1 className={className}>{animatedTitle}</h1>
+      <h1 className={classNames(className, isFinished && "finished")}>{animatedTitle}</h1>
     );
   }
 }

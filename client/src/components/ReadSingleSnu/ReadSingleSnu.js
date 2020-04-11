@@ -11,6 +11,7 @@ export default class ReadSingleSnu extends Component {
   constructor(props) {
     super(props);
     this.presentText = this.presentText.bind(this);
+    this.presentFirstSentence = this.presentFirstSentence.bind(this);
     this.state = {
       tite: '',
       firstLetter: '',
@@ -71,11 +72,10 @@ export default class ReadSingleSnu extends Component {
 
   presentTitle() {
     this.setState({ shouldPresentTitle: true });
-    // setTimeout(() => this.presentFirstSentence(), 2000);
   } 
 
   presentFirstSentence() {
-    this.setState({ shouldPresentFirstSentence: true });
+    setTimeout(() =>this.setState({ shouldPresentFirstSentence: true }), 1000);
   }
 
   presentText() {
@@ -95,7 +95,14 @@ export default class ReadSingleSnu extends Component {
 
     return (
       <div>
-        { shouldPresentTitle && <TitleAnimator className="snuTitle">{'taxi'}</TitleAnimator>}
+        { shouldPresentTitle &&
+          <TitleAnimator
+            className="snuTitle"
+            onFinish={ this.presentFirstSentence }
+          >
+              {'taxi'}
+          </TitleAnimator>
+        }
         { shouldPresentFirstSentence &&
           <TypeWriter
             initialClassName="historiatedInitial"
