@@ -48,11 +48,11 @@ export default class TypeWriter extends Component {
 
 
   render() {
-    const { className, initialClassName, textClassName } = this.props;
+    const { className, initialClassName, textClassName, hasHistoriatedInitial } = this.props;
     const { historiatedInitial, typed } = this.state;
     return (
       <div className="wrapper">
-        <h1 className={initialClassName}>{ historiatedInitial }</h1>
+        {hasHistoriatedInitial && <h1 className={initialClassName}>{ historiatedInitial }</h1>}
         <p className={textClassName}>{typed}</p>
       </div>
     );

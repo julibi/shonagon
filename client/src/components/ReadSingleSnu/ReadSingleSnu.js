@@ -9,6 +9,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 export default class ReadSingleSnu extends Component {
   constructor(props) {
     super(props);
+    this.presentText = this.presentText.bind(this);
     this.state = {
       tite: '',
       firstLetter: '',
@@ -77,7 +78,7 @@ export default class ReadSingleSnu extends Component {
   }
 
   presentText() {
-    this.setState({ shouldPresentText: true });
+    setTimeout(() => this.setState({ shouldPresentText: true }), 1000);
   }
 
   render() {
@@ -110,11 +111,3 @@ export default class ReadSingleSnu extends Component {
   }
 }
 
-
-// TODO
-// know what the first sentence is, cut it out
-// know what the first letter is, cut that out too
-// THEN
-// first fade in the big letter
-// type out the first sentence
-// then fade in the rest
