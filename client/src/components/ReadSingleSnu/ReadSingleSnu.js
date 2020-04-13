@@ -100,7 +100,7 @@ export default class ReadSingleSnu extends Component {
             className="snuTitle"
             onFinish={ this.presentFirstSentence }
           >
-              {'taxi'}
+              {'Aloishattenberg pt 2'}
           </TitleAnimator>
         }
         { shouldPresentFirstSentence &&
