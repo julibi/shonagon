@@ -7,30 +7,3 @@ body {
   background: #000000;
   color: #fff;
 }
-
-.navigation ul {
-  list-style-type: none;
-  border-bottom: 1px solid #fff;
-  padding-bottom: 1em;
-}
-
-.navigation ul li {
-  display: inline-block;
-  margin: 0 1.5em 0.5em 0;
-}
-
-.navigation ul li a {
-  text-decoration: none;
-  font-size: 1.3em;
-}
-
-.navigation ul li a:visited {
-  color: white;
-}
-
-@media only screen and (min-width: 414px) {
-  .navigation ul li {
-    margin: 0 1.5em 1.5em 0;
-    font-size: 1em;
-  }
-}

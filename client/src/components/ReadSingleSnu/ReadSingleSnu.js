@@ -94,7 +94,7 @@ export default class ReadSingleSnu extends Component {
     } = this.state;
 
     return (
-      <div>
+      <div className="snuWrapper">
         { shouldPresentTitle &&
           <TitleAnimator
             className="snuTitle"
