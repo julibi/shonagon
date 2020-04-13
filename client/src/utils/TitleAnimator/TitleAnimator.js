@@ -7,8 +7,9 @@ export default class TitleAnimator extends Component {
     super(props);
     this.bla = this.bla.bind(this);
     this.blub = this.blub.bind(this);
+    this.lala = this.lala.bind(this);
     this.state = {
-      alphabet: 'SHANGHAI SHONAGONabcdefghijklmnopqrstuvwxyzöäüß0123456789 ',
+      alphabet: 'abcdefghijklmnopqrstuvwxyzöäüß0123456789 ',
       originalTitle: this.props.children,
       animatedTitle: '',
       count: 0,
@@ -50,10 +51,29 @@ export default class TitleAnimator extends Component {
     }
   }
 
-  blubs(char, originalChar) {
+  blub(char, originalChar) {
     const currentCharCode = char.charCodeAt();
     const targetCharCode = originalChar.charCodeAt();
-    console.log(char);
+    
+    if (currentCharCode === targetCharCode) {
+      return char;
+    }
+    if (currentCharCode < targetCharCode) {
+       return String.fromCharCode(currentCharCode + 1);
+    }
+    if (currentCharCode > targetCharCode) {
+      return String.fromCharCode(currentCharCode + 1);
+   }
+
+  }
+
+  lala(char) {
+    const { alphabet, count } = this.state;
+    if(char == ' ') {
+      this.setState({ count: 0 });
+      return alphabet[this.state.count]
+    }
+    this.setState({ count: count + 1 });
     return char;
   }
 
@@ -71,9 +91,10 @@ export default class TitleAnimator extends Component {
       .map((letter, index) =>
         ((letter == originalTitle[index])
         ? this.bla(letter, originalTitle[index])
-        // : this.blub(alphabet[index+count])
-        : this.blubs(letter, originalTitle[index])
-      )
+        // : alphabet[index+count]
+        : this.lala(alphabet[index+count])
+        // : this.blub(letter, originalTitle[index])
+      ))
       .join('');
     
     this.setState({ animatedTitle: updatedAnimatedTitle, count: count + 1});
