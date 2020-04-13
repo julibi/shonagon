@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './ReadSingleSnu.css';
 import { getRandomSnu } from '../../actions';
-import * as SNUS from '../../assets/snus.json';
-import TypeWriter from './TypeWriter';
-import TitleAnimator from './TitleAnimator';
+import * as snus from '../../assets/snus.json';
+import TypeWriter from '../../utils/TypeWriter';
+import TitleAnimator from '../../utils/TitleAnimator';
 
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
@@ -12,63 +12,62 @@ export default class ReadSingleSnu extends Component {
     super(props);
     this.presentText = this.presentText.bind(this);
     this.presentFirstSentence = this.presentFirstSentence.bind(this);
+    this.getAllTags = this.getAllTags.bind(this);
     this.state = {
-      tite: '',
+      id: null,
+      title: '',
       firstLetter: '',
       firstSentence: '',
       text: '',
       shouldPresentTitle: false,
       shouldPresentFirstSentence: false,
-      shouldPresentText: false
+      shouldPresentText: false,
+      alreadyReadSnus: [],
+      currentSnu: null
     };
   }
 
   componentDidMount() {
-    const title = SNUS.SNUS[0].title;
-    const text = SNUS.SNUS[0].text;
-    const firstSentence = SNUS.SNUS[0].beginning;
+    const { SNUS } = snus;
+    const snu = SNUS[Math.floor(Math.random() * SNUS.length)];
+    const id = snu.id;
+    const title = snu.title;
+    const text = snu.text;
+    const firstSentence = snu.beginning;
     const firstLetter = firstSentence[0];
-
-    this.setState({ title, text, firstSentence, firstLetter });
+    console.log(title);
+    this.setState({ id, title, text, firstSentence, firstLetter });
     this.presentTitle();
+    // this.getAllTags();
   }
 
-  // handleDoneReading(snu) {
-  //   const { getSnusMatchingKeyword, getRandomSnu } = this.props;
+  getAllTags() {
+    const { SNUS } = snus;
+    let tags = [];
+    const test = SNUS
+      .map(textunit =>
+        textunit.tags
+        .map(tag =>
+          tags.push(tag)
+        )
+      );
+    const uniqueTags = tags.filter((v, i, a) => a.indexOf(v) === i); 
+  }
 
-  //   if (snu.keywords.length > 0) {
-  //     const randomIndex = Math.floor(Math.random() * snu.keywords.length);
-  //     const randomKeyword = snu.keywords[randomIndex];
-
-  //     getSnusMatchingKeyword(randomKeyword);
-      
-  //     this.setState({ showTitles: true });
-
-  //   } else {
-  //     this.handleRandomSnu(snu);
-  //   } 
-  // }
-
-  // fetchNextSnu(id, oldId, oldSnu) {
-
-  //   const { fetchSnu, setToRead } = this.props;
-
-  //   setToRead(oldId, oldSnu);
-  //   fetchSnu(id);
-  //   this.setState({ showTitles: false });
-
-  //     // TAKE CARE OF 2 EDGE CASES:
-  //       // the random endpoint sometimes returns the same as currentSnu
-  //       // sometimes you filter by clicking on done reading but there are no snus left that
-  //         // dispatch the random action
-  // }      
-
-  // handleRandomSnu(snu) {
-  //   const { setToRead, getRandomSnu } = this.props;
-
-  //   setToRead(snu._id, snu);
-  //   getRandomSnu();
-  // }
+//   5ar8ouge
+// TitleAnimator.js:54 BarRouge
+// TitleAnimator.js:55 6ar9ouge
+// TitleAnimator.js:54 BarRouge
+// TitleAnimator.js:55 7ar ouge
+// TitleAnimator.js:54 BarRouge
+// TitleAnimator.js:55 8arouge
+// TitleAnimator.js:54 BarRouge
+// TitleAnimator.js:55 9ar
+// TitleAnimator.js:54 BarRouge
+// TitleAnimator.js:55  ar
+// TitleAnimator.js:54 BarRouge
+// TitleAnimator.js:55 ar
+// TitleAnimator.js:54 BarRouge
 
   presentTitle() {
     this.setState({ shouldPresentTitle: true });
@@ -92,6 +91,7 @@ export default class ReadSingleSnu extends Component {
       shouldPresentFirstSentence,
       shouldPresentText
     } = this.state;
+    console.log(this.state);
 
     return (
       <div className="snuWrapper">
@@ -100,7 +100,7 @@ export default class ReadSingleSnu extends Component {
             className="snuTitle"
             onFinish={ this.presentFirstSentence }
           >
-              {'Aloishattenberg pt 2'}
+            { 'BarRouge' }
           </TitleAnimator>
         }
         { shouldPresentFirstSentence &&

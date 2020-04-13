@@ -6,6 +6,7 @@ export default class TitleAnimator extends Component {
   constructor(props) {
     super(props);
     this.bla = this.bla.bind(this);
+    this.blub = this.blub.bind(this);
     this.state = {
       alphabet: 'SHANGHAI SHONAGONabcdefghijklmnopqrstuvwxyzöäüß0123456789 ',
       originalTitle: this.props.children,
@@ -29,6 +30,9 @@ export default class TitleAnimator extends Component {
     let isOriginalCharUppercase = false;
     let isCharUppercase = false;
     
+    if (char === originalChar) {
+      return char;
+    }
     if (originalChar == ' ') {
       return ' ';
     }
@@ -38,9 +42,6 @@ export default class TitleAnimator extends Component {
     if (char === char.toUpperCase()) {
       isCharUppercase = true;
     }
-    if ((isOriginalCharUppercase && isCharUppercase) || (!isOriginalCharUppercase && !isCharUppercase)) {
-      return char;
-    }
     if (!isOriginalCharUppercase && isCharUppercase) {
       return char.toLowerCase();
     }
@@ -49,17 +50,29 @@ export default class TitleAnimator extends Component {
     }
   }
 
+  blubs(char, originalChar) {
+    const currentCharCode = char.charCodeAt();
+    const targetCharCode = originalChar.charCodeAt();
+    console.log(char);
+    return char;
+  }
+
   changeLetter() {
     const { alphabet, originalTitle, animatedTitle, count } = this.state;
+
     if (originalTitle === animatedTitle) {
       this.setState({ isFinished: true });
       return this.props.onFinish();
     }
-    console.log(animatedTitle);
+
     const updatedAnimatedTitle =
       animatedTitle
       .split('')
-      .map((letter, index) => ((letter == originalTitle[index]) ? this.bla(letter, originalTitle[index]) : alphabet[index+count])
+      .map((letter, index) =>
+        ((letter == originalTitle[index])
+        ? this.bla(letter, originalTitle[index])
+        // : this.blub(alphabet[index+count])
+        : this.blubs(letter, originalTitle[index])
       )
       .join('');
     
