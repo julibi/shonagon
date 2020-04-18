@@ -5,12 +5,10 @@ import './TitleAnimator.css';
 export default class TitleAnimator extends Component {
   constructor(props) {
     super(props);
-    this.bla = this.bla.bind(this);
-    this.blub = this.blub.bind(this);
-    this.lala = this.lala.bind(this);
     this.state = {
-      alphabet: 'abcdefghijklmnopqrstuvwxyzöäüß0123456789 ',
+      alphabet: 'abcdefghijklmnopqrstuvwxyzöäüß0123456789 abcdefghijklmnopqrstuvwxyzöäüß0123456789',
       originalTitle: this.props.children,
+      lowercaseOriginalTitle: this.props.children.toLowerCase(),
       animatedTitle: '',
       count: 0,
       isFinished: false
@@ -27,74 +25,22 @@ export default class TitleAnimator extends Component {
     setTimeout(() => this.changeLetter(), 3000);
   }
 
-  bla(char, originalChar) {
-    let isOriginalCharUppercase = false;
-    let isCharUppercase = false;
-    
-    if (char === originalChar) {
-      return char;
-    }
-    if (originalChar == ' ') {
-      return ' ';
-    }
-    if (originalChar === originalChar.toUpperCase()) {
-      isOriginalCharUppercase = true;
-    }
-    if (char === char.toUpperCase()) {
-      isCharUppercase = true;
-    }
-    if (!isOriginalCharUppercase && isCharUppercase) {
-      return char.toLowerCase();
-    }
-    if (isOriginalCharUppercase && !isCharUppercase) {
-      return char.toUpperCase();
-    }
-  }
-
-  blub(char, originalChar) {
-    const currentCharCode = char.charCodeAt();
-    const targetCharCode = originalChar.charCodeAt();
-    
-    if (currentCharCode === targetCharCode) {
-      return char;
-    }
-    if (currentCharCode < targetCharCode) {
-       return String.fromCharCode(currentCharCode + 1);
-    }
-    if (currentCharCode > targetCharCode) {
-      return String.fromCharCode(currentCharCode + 1);
-   }
-
-  }
-
-  lala(char) {
-    const { alphabet, count } = this.state;
-    if(char == ' ') {
-      this.setState({ count: 0 });
-      return alphabet[this.state.count]
-    }
-    this.setState({ count: count + 1 });
-    return char;
-  }
-
   changeLetter() {
-    const { alphabet, originalTitle, animatedTitle, count } = this.state;
+    const { alphabet, originalTitle, animatedTitle, count, lowercaseOriginalTitle } = this.state;
 
-    if (originalTitle === animatedTitle) {
-      this.setState({ isFinished: true });
+    // TODO: check if the first possible condition can ever be true…
+    if (lowercaseOriginalTitle == animatedTitle || count > 60) {
+      this.setState({
+        animatedTitle: originalTitle,
+        isFinished: true
+      });
       return this.props.onFinish();
     }
 
     const updatedAnimatedTitle =
       animatedTitle
       .split('')
-      .map((letter, index) =>
-        ((letter == originalTitle[index])
-        ? this.bla(letter, originalTitle[index])
-        // : alphabet[index+count]
-        : this.lala(alphabet[index+count])
-        // : this.blub(letter, originalTitle[index])
-      ))
+      .map((letter, index) => ((letter == originalTitle[index]) ? letter : alphabet[index+count]))
       .join('');
     
     this.setState({ animatedTitle: updatedAnimatedTitle, count: count + 1});
