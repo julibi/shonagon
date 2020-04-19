@@ -27,7 +27,8 @@ export default class ReadSingleSnu extends Component {
       shouldPresentText: false,
       alreadyReadSnus: [],
       currentSnu: null,
-      isFinishedReading: false
+      isFinishedReading: false,
+      shouldShowNextButton: false
     };
   }
 
@@ -44,7 +45,6 @@ export default class ReadSingleSnu extends Component {
     this.presentTitle();
     window.addEventListener('scroll', this.handleScroll);
   }
-
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
@@ -73,17 +73,20 @@ export default class ReadSingleSnu extends Component {
 
   presentText() {
     setTimeout(() => this.setState({ shouldPresentText: true }), 1000);
+    // if (window.innerHeight >= document.body.scrollHeight) {
+    //   console.log('bottom reached coz text is short');
+    //   this.setState({ shouldShowNextButton: true });
+    // }
   }
 
   handleClick() {
     this.setState({ isFinishedReading: true });
   }
 
-  handleScroll(event) {
-    let test = event.srcElement.body.scrollTop
-    if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
-      // you're at the bottom of the page
-      console.log("Bottom of page");
+  handleScroll() {
+    if (((window.innerHeight + window.scrollY) >= document.body.scrollHeight) && this.state.text.length > 1) {
+      console.log('bottom reacheds');
+      this.setState({ shouldShowNextButton: true });
     }
   }
 
@@ -96,12 +99,20 @@ export default class ReadSingleSnu extends Component {
       shouldPresentTitle,
       shouldPresentFirstSentence,
       shouldPresentText,
-      isFinishedReading
+      isFinishedReading,
+      shouldShowNextButton
     } = this.state;
 
     return (
       <Fragment>
-        <button onClick={this.handleClick} classNames="specialButton">{"finishd reading"}</button>
+        <button
+          classNames={ classNames(
+            shouldShowNextButton ?
+            "specialButtonShow" :
+            "specialButton"
+          ) }
+        >
+          {"finishd reading"}</button>
         <div className={ classNames("snuWrapper", isFinishedReading && "test") }>
           { shouldPresentTitle &&
             <TitleAnimator

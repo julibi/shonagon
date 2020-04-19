@@ -12,10 +12,12 @@
 }
 
 .specialButton {
-  width: 30px;
+  display: none;
   cursor: pointer;
-  color: red;
-  background-color: white;
+}
+
+.specialButtonShow {
+  display: block;
 }
 
 @keyframes fadeOut {
