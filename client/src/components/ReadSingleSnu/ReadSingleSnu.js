@@ -13,6 +13,7 @@ export default class ReadSingleSnu extends Component {
     this.presentText = this.presentText.bind(this);
     this.presentFirstSentence = this.presentFirstSentence.bind(this);
     this.getAllTags = this.getAllTags.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.state = {
       id: null,
       title: '',
@@ -23,7 +24,8 @@ export default class ReadSingleSnu extends Component {
       shouldPresentFirstSentence: false,
       shouldPresentText: false,
       alreadyReadSnus: [],
-      currentSnu: null
+      currentSnu: null,
+      isFinishedReading: false
     };
   }
 
@@ -38,7 +40,6 @@ export default class ReadSingleSnu extends Component {
     console.log(title);
     this.setState({ id, title, text, firstSentence, firstLetter });
     this.presentTitle();
-    // this.getAllTags();
   }
 
   getAllTags() {
@@ -54,21 +55,6 @@ export default class ReadSingleSnu extends Component {
     const uniqueTags = tags.filter((v, i, a) => a.indexOf(v) === i); 
   }
 
-//   5ar8ouge
-// TitleAnimator.js:54 BarRouge
-// TitleAnimator.js:55 6ar9ouge
-// TitleAnimator.js:54 BarRouge
-// TitleAnimator.js:55 7ar ouge
-// TitleAnimator.js:54 BarRouge
-// TitleAnimator.js:55 8arouge
-// TitleAnimator.js:54 BarRouge
-// TitleAnimator.js:55 9ar
-// TitleAnimator.js:54 BarRouge
-// TitleAnimator.js:55  ar
-// TitleAnimator.js:54 BarRouge
-// TitleAnimator.js:55 ar
-// TitleAnimator.js:54 BarRouge
-
   presentTitle() {
     this.setState({ shouldPresentTitle: true });
   } 
@@ -81,6 +67,10 @@ export default class ReadSingleSnu extends Component {
     setTimeout(() => this.setState({ shouldPresentText: true }), 1000);
   }
 
+  handleClick() {
+    this.setState({ isFinishedReading: true });
+  }
+
   render() {
     const {
       title,
@@ -89,9 +79,9 @@ export default class ReadSingleSnu extends Component {
       text,
       shouldPresentTitle,
       shouldPresentFirstSentence,
-      shouldPresentText
+      shouldPresentText,
+      isFinishedReading
     } = this.state;
-    console.log(this.state);
 
     return (
       <div className="snuWrapper">
