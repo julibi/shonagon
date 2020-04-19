@@ -15,6 +15,7 @@ export default class ReadSingleSnu extends Component {
     this.presentFirstSentence = this.presentFirstSentence.bind(this);
     this.getAllTags = this.getAllTags.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleScroll = this.handleScroll.bind(this);
     this.state = {
       id: null,
       title: '',
@@ -38,9 +39,15 @@ export default class ReadSingleSnu extends Component {
     const text = snu.text;
     const firstSentence = snu.beginning;
     const firstLetter = firstSentence[0];
-    console.log(title);
+
     this.setState({ id, title, text, firstSentence, firstLetter });
     this.presentTitle();
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
   }
 
   getAllTags() {
@@ -70,6 +77,14 @@ export default class ReadSingleSnu extends Component {
 
   handleClick() {
     this.setState({ isFinishedReading: true });
+  }
+
+  handleScroll(event) {
+    let test = event.srcElement.body.scrollTop
+    if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
+      // you're at the bottom of the page
+      console.log("Bottom of page");
+    }
   }
 
   render() {
