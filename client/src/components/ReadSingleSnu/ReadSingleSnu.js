@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import classNames from 'classnames';
 import './ReadSingleSnu.css';
 import { getRandomSnu } from '../../actions';
 import * as snus from '../../assets/snus.json';
@@ -84,27 +85,30 @@ export default class ReadSingleSnu extends Component {
     } = this.state;
 
     return (
-      <div className="snuWrapper">
-        { shouldPresentTitle &&
-          <TitleAnimator
-            className="snuTitle"
-            onFinish={ this.presentFirstSentence }
-          >
-            { title }
-          </TitleAnimator>
-        }
-        { shouldPresentFirstSentence &&
-          <TypeWriter
-            initialClassName="historiatedInitial"
-            textClassName="typedText"
-            hasHistoriatedInitial
-            onFinish={ this.presentText }
-          >
-            { firstSentence }
-          </TypeWriter>
-        }
-        { shouldPresentText && <p className="text">{text}</p> }
-      </div>
+      <Fragment>
+        <button onClick={this.handleClick} classNames="specialButton">{"finishd reading"}</button>
+        <div className={ classNames("snuWrapper", isFinishedReading && "test") }>
+          { shouldPresentTitle &&
+            <TitleAnimator
+              className="snuTitle"
+              onFinish={ this.presentFirstSentence }
+            >
+              { title }
+            </TitleAnimator>
+          }
+          { shouldPresentFirstSentence &&
+            <TypeWriter
+              initialClassName="historiatedInitial"
+              textClassName="typedText"
+              hasHistoriatedInitial
+              onFinish={ this.presentText }
+            >
+              { firstSentence }
+            </TypeWriter>
+          }
+          { shouldPresentText && <p className="text">{text}</p> }
+        </div>
+      </Fragment>
     );
   }
 }

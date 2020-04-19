@@ -6,6 +6,28 @@
   flex-direction: column;
 }
 
+.test {
+  animation-name: fadeOut;
+  animation-duration: 3s;
+}
+
+.specialButton {
+  width: 30px;
+  cursor: pointer;
+  color: red;
+  background-color: white;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+
 .snuTitle {
   font-size: 500px;
   position: absolute;
