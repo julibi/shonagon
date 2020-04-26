@@ -131,9 +131,17 @@ export default class ReadSingleSnu extends Component {
               { firstSentence }
             </TypeWriter>
           }
-          { shouldPresentText && <p className="text">{"text grzeu grheuia grheu igrehua gre grheauil grh eu"}</p> }
+          { shouldPresentText &&
+            <p className="text">
+              {text}
+            </p>
+          }
         </div>
-        { shouldShowNextButton && <button className={"test"}>{"finishd reading"}</button> }
+        { shouldShowNextButton &&
+          <button className="nextButton">
+            {"Weiter lesen"}
+          </button>
+        }
       </Fragment>
     );
   }

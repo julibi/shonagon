@@ -19,7 +19,7 @@ export default class TitleAnimator extends Component {
     const { originalTitle, alphabet, animatedTitle, count } = this.state;
     const initialAnimatedTitle = alphabet.slice(0, originalTitle.length);
   
-    if (animatedTitle === '' && count === 0) {
+    if (!animatedTitle.length && !count) {
       this.setState({ animatedTitle: initialAnimatedTitle });
     }
     setTimeout(() => this.changeLetter(), 3000);

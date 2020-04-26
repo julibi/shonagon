@@ -1,12 +1,12 @@
 
 .finished {
-  animation-name: fadeOut;
+  animation-name: fadeOutDecrease;
   animation-duration: 3s;
   opacity: 0.1;
   font-size: 300px;
 }
 
-@keyframes fadeOut {
+@keyframes fadeOutDecrease {
   from {
     opacity: 1;
     font-size: 500px;
