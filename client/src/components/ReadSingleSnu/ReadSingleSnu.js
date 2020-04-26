@@ -40,10 +40,10 @@ export default class ReadSingleSnu extends Component {
     const text = snu.text;
     const firstSentence = snu.beginning;
     const firstLetter = firstSentence[0];
+    const { shouldPresentText } = this.state;
 
     this.setState({ id, title, text, firstSentence, firstLetter });
     this.presentTitle();
-    window.addEventListener('scroll', this.handleScroll);
   }
 
   componentWillUnmount() {
@@ -71,12 +71,20 @@ export default class ReadSingleSnu extends Component {
     setTimeout(() =>this.setState({ shouldPresentFirstSentence: true }), 1000);
   }
 
-  presentText() {
-    setTimeout(() => this.setState({ shouldPresentText: true }), 1000);
-    // if (window.innerHeight >= document.body.scrollHeight) {
-    //   console.log('bottom reached coz text is short');
-    //   this.setState({ shouldShowNextButton: true });
-    // }
+  async presentText() {
+    await this.setState({ shouldPresentText: true });
+
+    setTimeout(() =>
+      ((window.innerHeight + window.scrollY) >= document.body.scrollHeight)
+      ? this.setState({ shouldShowNextButton: true })
+      : this.addScroll()
+    , 3000);
+  }
+
+  addScroll() {
+    window.addEventListener('scroll', () => {
+      this.handleScroll();
+    });
   }
 
   handleClick() {
@@ -84,8 +92,7 @@ export default class ReadSingleSnu extends Component {
   }
 
   handleScroll() {
-    if (((window.innerHeight + window.scrollY) >= document.body.scrollHeight) && this.state.text.length > 1) {
-      console.log('bottom reacheds');
+    if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
       this.setState({ shouldShowNextButton: true });
     }
   }
@@ -105,15 +112,7 @@ export default class ReadSingleSnu extends Component {
 
     return (
       <Fragment>
-        <button
-          classNames={ classNames(
-            shouldShowNextButton ?
-            "specialButtonShow" :
-            "specialButton"
-          ) }
-        >
-          {"finishd reading"}</button>
-        <div className={ classNames("snuWrapper", isFinishedReading && "test") }>
+        <div className={ classNames("snuWrapper", isFinishedReading && "snuFadeOut") }>
           { shouldPresentTitle &&
             <TitleAnimator
               className="snuTitle"
@@ -132,8 +131,9 @@ export default class ReadSingleSnu extends Component {
               { firstSentence }
             </TypeWriter>
           }
-          { shouldPresentText && <p className="text">{text}</p> }
+          { shouldPresentText && <p className="text">{"text grzeu grheuia grheu igrehua gre grheauil grh eu"}</p> }
         </div>
+        { shouldShowNextButton && <button className={"test"}>{"finishd reading"}</button> }
       </Fragment>
     );
   }
