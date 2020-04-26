@@ -39,7 +39,7 @@ export default class TypeWriter extends Component {
     const { count, sentence } = this.state;
 
     this.setState({
-      historiatedInitial: this.state.sentence[0],
+      historiatedInitial: sentence[0],
       count: count + 1
     });
 
@@ -48,7 +48,7 @@ export default class TypeWriter extends Component {
 
 
   render() {
-    const { className, initialClassName, textClassName, hasHistoriatedInitial } = this.props;
+    const { initialClassName, textClassName, hasHistoriatedInitial } = this.props;
     const { historiatedInitial, typed } = this.state;
     return (
       <div className="TypeWriterWrapper">

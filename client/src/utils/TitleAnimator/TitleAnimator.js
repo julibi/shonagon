@@ -29,7 +29,7 @@ export default class TitleAnimator extends Component {
     const { alphabet, originalTitle, animatedTitle, count, lowercaseOriginalTitle } = this.state;
 
     // TODO: check if the first possible condition can ever be true…
-    if (lowercaseOriginalTitle == animatedTitle || count > 60) {
+    if (lowercaseOriginalTitle === animatedTitle || count > 60) {
       this.setState({
         animatedTitle: originalTitle,
         isFinished: true
@@ -40,7 +40,7 @@ export default class TitleAnimator extends Component {
     const updatedAnimatedTitle =
       animatedTitle
       .split('')
-      .map((letter, index) => ((letter == originalTitle[index]) ? letter : alphabet[index+count]))
+      .map((letter, index) => ((letter === originalTitle[index]) ? letter : alphabet[index+count]))
       .join('');
     
     this.setState({ animatedTitle: updatedAnimatedTitle, count: count + 1});

@@ -1,12 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import classNames from 'classnames';
 import './ReadSingleSnu.css';
-import { getRandomSnu } from '../../actions';
 import * as snus from '../../assets/snus.json';
 import TypeWriter from '../../utils/TypeWriter';
 import TitleAnimator from '../../utils/TitleAnimator';
-
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import AlgoModal from '../../utils/AlgoModal';
 
 export default class ReadSingleSnu extends Component {
   constructor(props) {
@@ -17,6 +15,7 @@ export default class ReadSingleSnu extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
     this.state = {
+      count: 0,
       id: null,
       title: '',
       firstLetter: '',
@@ -28,7 +27,9 @@ export default class ReadSingleSnu extends Component {
       alreadyReadSnus: [],
       currentSnu: null,
       isFinishedReading: false,
-      shouldShowNextButton: false
+      shouldShowNextButton: false,
+      shoudldShowAlgoModal: false,
+      uniqueTags: []      
     };
   }
 
@@ -39,11 +40,10 @@ export default class ReadSingleSnu extends Component {
     const title = snu.title;
     const text = snu.text;
     const firstSentence = snu.beginning;
-    const firstLetter = firstSentence[0];
-    const { shouldPresentText } = this.state;
 
-    this.setState({ id, title, text, firstSentence, firstLetter });
+    this.setState({ id, title, text, firstSentence });
     this.presentTitle();
+    this.getAllTags();
   }
 
   componentWillUnmount() {
@@ -61,6 +61,7 @@ export default class ReadSingleSnu extends Component {
         )
       );
     const uniqueTags = tags.filter((v, i, a) => a.indexOf(v) === i); 
+    this.setState({ uniqueTags });
   }
 
   presentTitle() {
@@ -87,9 +88,29 @@ export default class ReadSingleSnu extends Component {
     });
   }
 
-  handleClick() {
-    this.setState({ isFinishedReading: true });
+  async handleClick() {
+    const { count } = this.state;
+    await this.setState({ isFinishedReading: true });
+    
+    if (!count) {
+      this.setState({ shoudldShowAlgoModal: true });
+    } else {
+      console.log('The logic to pull up the next SNU.');
+    }
   }
+
+  // partialReset() {
+  //   this.setState({
+  //     id: null,
+  //     title: '',
+  //     firstLetter: '',
+  //     firstSentence: '',
+  //     text: '',
+  //     shouldPresentTitle: false,
+  //     shouldPresentFirstSentence: false,
+  //     shouldPresentText: false    
+  //   });
+  // }
 
   handleScroll() {
     if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
@@ -100,7 +121,6 @@ export default class ReadSingleSnu extends Component {
   render() {
     const {
       title,
-      firstLetter,
       firstSentence,
       text,
       shouldPresentTitle,
@@ -138,10 +158,14 @@ export default class ReadSingleSnu extends Component {
           }
         </div>
         { shouldShowNextButton &&
-          <button className="nextButton">
+          <button
+            onClick={ this.handleClick }
+            className={classNames("nextButton", isFinishedReading && "snuFadeOut") }
+          >
             {"Weiter lesen"}
           </button>
         }
+        {isFinishedReading && <AlgoModal />}
       </Fragment>
     );
   }

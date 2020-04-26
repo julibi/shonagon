@@ -5,7 +5,7 @@ import ReadSnus from './ReadSnus';
 
 class ReadSingleSnuContainer extends Component {
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.getReadSnus();
   }
 

@@ -9,10 +9,12 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "bootstrap": "^4.4.1",
     "classnames": "^2.2.6",
     "immutability-helper": "^2.6.6",
     "react": "^16.2.0",
     "react-addons-css-transition-group": "^15.6.2",
+    "react-bootstrap": "^1.0.1",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
     "react-reveal-text": "^0.1.1",
