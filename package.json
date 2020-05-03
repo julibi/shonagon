@@ -10,7 +10,7 @@
     "http": "^0.0.0",
     "lodash": "^4.17.5",
     "mongodb": "^3.0.3",
-    "mongoose": "^5.0.7",
+    "mongoose": "^5.7.5",
     "morgan": "^1.9.0",
     "nodemon": "^1.17.1",
     "redux-form": "^7.3.0"
