@@ -5,7 +5,16 @@ import * as snus from '../../assets/snus.json';
 import TypeWriter from '../../utils/TypeWriter';
 import TitleAnimator from '../../utils/TitleAnimator';
 
-  // TODO: scroll to top
+  // TODO:
+  // - Mobile View!
+  // - adjust snus
+  // - add a navigation?
+  //   - Exposé
+  //   - about the author
+  // www.tacheles/shanghaishonagon --> vielleicht irgendwann später - 
+  // deploy to a link www.shanghaishonagon.de keep it and if you remove
+  // the content, link to 33Zeichen.
+  // oder lass es und die Autorenseite führt zu 33Zeichen?
 
 export default class ReadSingleSnu extends Component {
   constructor(props) {
