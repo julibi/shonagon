@@ -15,6 +15,8 @@ import TitleAnimator from '../../utils/TitleAnimator';
   // deploy to a link www.shanghaishonagon.de keep it and if you remove
   // the content, link to 33Zeichen.
   // oder lass es und die Autorenseite führt zu 33Zeichen?
+  // try disabling Javascript
+  // make note to enable javascript?
 
 export default class ReadSingleSnu extends Component {
   constructor(props) {
@@ -35,7 +37,6 @@ export default class ReadSingleSnu extends Component {
       shouldPresentTitle: false,
       shouldPresentFirstSentence: false,
       shouldPresentText: false,
-      alreadyReadSnus: [],
       isFinishedReading: false,
       shouldShowNextButton: false,
       uniqueTags: [],
@@ -72,8 +73,22 @@ export default class ReadSingleSnu extends Component {
     const { tags, count, readSnus } = this.state;
     const tag = tags[Math.floor(Math.random() * tags.length)];
     const candidates = SNUS.filter(snu => snu.tags.includes(tag) && !readSnus.includes(snu.id));
-    const newSnu = candidates[Math.floor(Math.random() * candidates.length)];
-
+    let newSnu;
+    console.log('candidates: ', candidates)
+    if (candidates.length === 0) {
+      console.log('case 1');
+      const unreadSnus = SNUS.filter(snu => !readSnus.includes(snu.id));
+      newSnu = unreadSnus[Math.floor(Math.random() * unreadSnus.length)]
+    }
+    if (candidates.length === 1) {
+      console.log('case 2');
+      newSnu = candidates[0]
+    }
+    if (candidates.length > 1) {
+      console.log('case 3');
+      newSnu = candidates[Math.floor(Math.random() * candidates.length)];
+    }
+    console.log('newSnu: ', newSnu);
     await this.setState({
       isFinishedReading: false,
       count: count + 1,
@@ -122,7 +137,6 @@ export default class ReadSingleSnu extends Component {
     await this.setState({ shouldPresentText: true });
 
     setTimeout(() => {
-      console.log(this.state.shouldShowNextButton);
       (document.body.offsetHeight <= window.innerHeight)
       ? this.setState({ shouldShowNextButton: true })
       : this.addScroll()
