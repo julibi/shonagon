@@ -4,6 +4,7 @@ import './ReadSingleSnu.css';
 import * as snus from '../../assets/snus.json';
 import TypeWriter from '../../utils/TypeWriter';
 import TitleAnimator from '../../utils/TitleAnimator';
+import EndModal from '../EndModal';
 
   // TODO:
   // - Mobile View!
@@ -11,6 +12,9 @@ import TitleAnimator from '../../utils/TitleAnimator';
   // - add a navigation?
   //   - Exposé
   //   - about the author
+  // -Logik für Texte die selten vorkommen, weil sie kaum oder wenige Tags haben
+  // -FIX ID 12 Button bug!!!
+  // -What happens when the author is done reading
   // www.tacheles/shanghaishonagon --> vielleicht irgendwann später - 
   // deploy to a link www.shanghaishonagon.de keep it and if you remove
   // the content, link to 33Zeichen.
@@ -39,6 +43,7 @@ export default class ReadSingleSnu extends Component {
       shouldPresentText: false,
       isFinishedReading: false,
       shouldShowNextButton: false,
+      shouldShowEndModal: false,
       uniqueTags: [],
       readSnus: [] 
     };
@@ -71,10 +76,25 @@ export default class ReadSingleSnu extends Component {
     window.scrollTo(0, 0)
     const { SNUS } = snus;
     const { tags, count, readSnus } = this.state;
+
+    // if all texts have been read, show 
+    if(readSnus.length === 2) {
+      return await this.setState({
+        shouldPresentTitle: false,
+        shouldPresentFirstSentence: false,
+        shouldPresentText: false,
+        shouldShowNextButton: false,
+        shouldShowEndModal: true
+      });
+    }
+
+    // NEXT UP: style the modal component including fading
+    // Build another Modal that shows after the 2nd SNU, explaining the project and linking to the Exposé (Exposé+Author+About all in 1 metapage!)
+
     const tag = tags[Math.floor(Math.random() * tags.length)];
     const candidates = SNUS.filter(snu => snu.tags.includes(tag) && !readSnus.includes(snu.id));
     let newSnu;
-    console.log('candidates: ', candidates)
+
     if (candidates.length === 0) {
       console.log('case 1');
       const unreadSnus = SNUS.filter(snu => !readSnus.includes(snu.id));
@@ -88,7 +108,7 @@ export default class ReadSingleSnu extends Component {
       console.log('case 3');
       newSnu = candidates[Math.floor(Math.random() * candidates.length)];
     }
-    console.log('newSnu: ', newSnu);
+
     await this.setState({
       isFinishedReading: false,
       count: count + 1,
@@ -165,6 +185,10 @@ export default class ReadSingleSnu extends Component {
     }
   }
 
+  hideEndModal() {
+    this.setState({ shouldShowEndModal: false });
+  }
+
   render() {
     const {
       title,
@@ -174,11 +198,18 @@ export default class ReadSingleSnu extends Component {
       shouldPresentFirstSentence,
       shouldPresentText,
       isFinishedReading,
-      shouldShowNextButton
+      shouldShowNextButton,
+      shouldShowEndModal
     } = this.state;
 
     return (
       <Fragment>
+        <EndModal
+          show={shouldShowEndModal}
+          handleClose={this.hideEndModal}
+        >
+          {"Hey so blablablaa"}
+        </EndModal>
         <div className={ classNames("snuWrapper", isFinishedReading && "snuFadeOut") }>
           { shouldPresentTitle &&
             <TitleAnimator
