@@ -12,12 +12,10 @@ import EndModal from '../EndModal';
   // - add a navigation?
   //   - Exposé
   //   - about the author
+  // - Fading fürs Modal
   // -Logik für Texte die selten vorkommen, weil sie kaum oder wenige Tags haben
   // -FIX ID 12 Button bug!!!
-  // -What happens when the author is done reading
-  // www.tacheles/shanghaishonagon --> vielleicht irgendwann später - 
-  // deploy to a link www.shanghaishonagon.de keep it and if you remove
-  // the content, link to 33Zeichen.
+  // CREATE A SIDEBAR WITH ALL KAPITELNAMEN, AND CROSS THROUGH THEM
   // oder lass es und die Autorenseite führt zu 33Zeichen?
   // try disabling Javascript
   // make note to enable javascript?
@@ -185,10 +183,6 @@ export default class ReadSingleSnu extends Component {
     }
   }
 
-  hideEndModal() {
-    this.setState({ shouldShowEndModal: false });
-  }
-
   render() {
     const {
       title,
@@ -204,12 +198,7 @@ export default class ReadSingleSnu extends Component {
 
     return (
       <Fragment>
-        <EndModal
-          show={shouldShowEndModal}
-          handleClose={this.hideEndModal}
-        >
-          {"Hey so blablablaa"}
-        </EndModal>
+        <EndModal show={shouldShowEndModal} />  
         <div className={ classNames("snuWrapper", isFinishedReading && "snuFadeOut") }>
           { shouldPresentTitle &&
             <TitleAnimator
