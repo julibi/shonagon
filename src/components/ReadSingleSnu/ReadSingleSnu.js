@@ -12,11 +12,9 @@ import EndModal from '../EndModal';
   // - add a navigation?
   //   - Exposé
   //   - about the author
-  // - Fading fürs Modal
   // -Logik für Texte die selten vorkommen, weil sie kaum oder wenige Tags haben
   // -FIX ID 12 Button bug!!!
   // CREATE A SIDEBAR WITH ALL KAPITELNAMEN, AND CROSS THROUGH THEM
-  // oder lass es und die Autorenseite führt zu 33Zeichen?
   // try disabling Javascript
   // make note to enable javascript?
 
@@ -43,7 +41,8 @@ export default class ReadSingleSnu extends Component {
       shouldShowNextButton: false,
       shouldShowEndModal: false,
       uniqueTags: [],
-      readSnus: [] 
+      readSnus: [],
+      SNUS: []
     };
   }
 
@@ -64,7 +63,7 @@ export default class ReadSingleSnu extends Component {
     const firstSentence = snu.firstSentence;
     const tags = snu.tags;
     const updatedReadSnus = [ ...readSnus, snu.id ];
-    this.setState({ id, title, text, firstSentence, tags, readSnus: updatedReadSnus });
+    this.setState({ id, title, text, firstSentence, tags, readSnus: updatedReadSnus, SNUS });
 
     this.presentTitle();
     this.getAllTags();
@@ -193,36 +192,45 @@ export default class ReadSingleSnu extends Component {
       shouldPresentText,
       isFinishedReading,
       shouldShowNextButton,
-      shouldShowEndModal
+      shouldShowEndModal,
+      SNUS
     } = this.state;
 
     return (
       <Fragment>
-        <EndModal show={shouldShowEndModal} />  
-        <div className={ classNames("snuWrapper", isFinishedReading && "snuFadeOut") }>
-          { shouldPresentTitle &&
-            <TitleAnimator
-              className="snuTitle"
-              onFinish={ this.presentFirstSentence }
-            >
-              { title }
-            </TitleAnimator>
-          }
-          { shouldPresentFirstSentence &&
-            <TypeWriter
-              initialClassName="historiatedInitial"
-              textClassName="typedText"
-              hasHistoriatedInitial
-              onFinish={ this.presentText }
-            >
-              { firstSentence }
-            </TypeWriter>
-          }
-          { shouldPresentText &&
-            <p className="text">
-              {text}
-            </p>
-          }
+        {/* don't forget to set the flag correctly */}
+        <EndModal show={shouldShowEndModal} className="modalFadeIn"/>
+        <div className="content">
+          <div className={ classNames("snuWrapper", isFinishedReading && "snuFadeOut") }>
+            { shouldPresentTitle &&
+              <TitleAnimator
+                className="snuTitle"
+                onFinish={ this.presentFirstSentence }
+              >
+                { title }
+              </TitleAnimator>
+            }
+            { shouldPresentFirstSentence &&
+              <TypeWriter
+                initialClassName="historiatedInitial"
+                textClassName="typedText"
+                hasHistoriatedInitial
+                onFinish={ this.presentText }
+              >
+                { firstSentence }
+              </TypeWriter>
+            }
+            { shouldPresentText &&
+              <p className="text">
+                {text}
+              </p>
+            }
+          </div>
+          <div className="titleWrapper">
+            {SNUS.length > 0 && <ul>{SNUS.map((snu, idx) =>
+              <li key={idx}>{snu.title}</li>
+            )}</ul>}
+          </div>
         </div>
         { shouldPresentText && shouldShowNextButton &&
           <button
