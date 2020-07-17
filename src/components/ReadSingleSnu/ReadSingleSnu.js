@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import classNames from 'classnames';
 import './ReadSingleSnu.css';
 import * as snus from '../../assets/snus.json';
@@ -7,6 +7,8 @@ import TitleAnimator from '../../utils/TitleAnimator';
 import EndModal from '../EndModal';
 
   // TODO:
+  // - divide json text by /n and let the texts flow in
+  // - OVERALL DESIGN
   // - Mobile View!
   // - adjust snus
   // - add a navigation?
@@ -14,7 +16,6 @@ import EndModal from '../EndModal';
   //   - about the author
   // -Logik für Texte die selten vorkommen, weil sie kaum oder wenige Tags haben
   // -FIX ID 12 Button bug!!!
-  // CREATE A SIDEBAR WITH ALL KAPITELNAMEN, AND CROSS THROUGH THEM
   // try disabling Javascript
   // make note to enable javascript?
 
@@ -74,8 +75,7 @@ export default class ReadSingleSnu extends Component {
     const { SNUS } = snus;
     const { tags, count, readSnus } = this.state;
 
-    // if all texts have been read, show 
-    if(readSnus.length === 2) {
+    if(readSnus.length === 24) {
       return await this.setState({
         shouldPresentTitle: false,
         shouldPresentFirstSentence: false,
@@ -85,8 +85,7 @@ export default class ReadSingleSnu extends Component {
       });
     }
 
-    // NEXT UP: style the modal component including fading
-    // Build another Modal that shows after the 2nd SNU, explaining the project and linking to the Exposé (Exposé+Author+About all in 1 metapage!)
+    // NEXT UP: Build another Modal that shows after the 2nd SNU, explaining the project and linking to the Exposé (Exposé+Author+About all in 1 metapage!)
 
     const tag = tags[Math.floor(Math.random() * tags.length)];
     const candidates = SNUS.filter(snu => snu.tags.includes(tag) && !readSnus.includes(snu.id));
@@ -184,6 +183,7 @@ export default class ReadSingleSnu extends Component {
 
   render() {
     const {
+      id,
       title,
       firstSentence,
       text,
@@ -193,14 +193,13 @@ export default class ReadSingleSnu extends Component {
       isFinishedReading,
       shouldShowNextButton,
       shouldShowEndModal,
-      SNUS
+      SNUS,
+      readSnus
     } = this.state;
 
     return (
-      <Fragment>
-        {/* don't forget to set the flag correctly */}
+      <div className="container">
         <EndModal show={shouldShowEndModal} className="modalFadeIn"/>
-        <div className="content">
           <div className={ classNames("snuWrapper", isFinishedReading && "snuFadeOut") }>
             { shouldPresentTitle &&
               <TitleAnimator
@@ -221,17 +220,32 @@ export default class ReadSingleSnu extends Component {
               </TypeWriter>
             }
             { shouldPresentText &&
-              <p className="text">
-                {text}
-              </p>
+            <section className="mainContent">
+              <div className="textWrapper">
+                <p className="text">
+                  {text}
+                </p>
+              </div>
+              <div className="chapertsWrapper">
+                {SNUS.length > 0 &&
+                  <ul className={classNames("chapters")}>
+                    {SNUS.map((snu, idx) =>
+                      <li
+                        key={idx}
+                        className={classNames(
+                          (readSnus.includes(snu.id) && (snu.id !== id)) && "crossedThrough",
+                          snu.id === id && "bold"
+                        )}
+                      >
+                        {snu.title}
+                      </li>
+                    )}
+                  </ul>
+                }
+              </div>
+            </section>
             }
           </div>
-          <div className="titleWrapper">
-            {SNUS.length > 0 && <ul>{SNUS.map((snu, idx) =>
-              <li key={idx}>{snu.title}</li>
-            )}</ul>}
-          </div>
-        </div>
         { shouldPresentText && shouldShowNextButton &&
           <button
             onClick={ this.handleClick }
@@ -240,7 +254,7 @@ export default class ReadSingleSnu extends Component {
             {"Weiter lesen"}
           </button>
         }
-      </Fragment>
+      </div>
     );
   }
 }

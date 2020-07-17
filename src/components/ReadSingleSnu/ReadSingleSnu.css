@@ -1,12 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@600&family=Noto+Sans+KR&display=swap');
 
-.content {
-  display: flex;
-  flex-direction: row;
+.container {
+  padding: 5em;
 }
 
 .snuWrapper {
-  width: 1000px;
   display: flex;
   flex-direction: column;
 }
@@ -40,19 +38,49 @@
 
 .typedText {
   font-size: 60px;
-  margin-bottom: 0;
+  margin-bottom: 50px;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  animation-name: fadeInFromBottom;
+  animation-duration: 3s;
+}
+
+.textWrapper {
+  width: 75%;
 }
 
 .text {
   color: #ffffff;
   white-space: pre-wrap;
   font-family: 'Noto Sans KR', sans-serif;
-  animation-name: fadeInFromTop;
-  animation-duration: 3s;
   font-size: 24px;
   line-height: 1.7;
   hyphens: auto; 
   text-align: justify
+}
+
+.chapertsWrapper {
+  width: 25%;
+}
+
+.chapters {
+  list-style-type: none;
+  text-align: right;
+  line-height: 1.7;
+}
+
+.crossedThrough {
+  text-decoration: line-through;
+}
+
+.bold {
+  font-weight: 500;
+  font-size: 18px;
+  font-style: sans-serif;
 }
 
 .nextButton {
@@ -104,7 +132,7 @@
   }
 }
 
-@keyframes fadeInFromTop {
+@keyframes fadeInFromBottom {
   from {
     opacity: 0.1;
     transform: translateY(50%);
