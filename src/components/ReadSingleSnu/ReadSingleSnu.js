@@ -7,17 +7,20 @@ import TitleAnimator from '../../utils/TitleAnimator';
 import EndModal from '../EndModal';
 
   // TODO:
+  // HEUTE
   // - divide json text by /n and let the texts flow in
-  // - OVERALL DESIGN
-  // - Mobile View!
-  // - adjust snus
-  // - add a navigation?
+  // - Second explanatory modal with link to About
+  // - Feedback: Enable Javascript. Recommended to read on big screen
+    // try disabling Javascript
+  // MORGEN
+  // - Aboutpage
   //   - Exposé
   //   - about the author
   // -Logik für Texte die selten vorkommen, weil sie kaum oder wenige Tags haben
   // -FIX ID 12 Button bug!!!
-  // try disabling Javascript
-  // make note to enable javascript?
+  // - OVERALL DESIGN
+  // - Mobile View!
+  // - adjust snus
 
 export default class ReadSingleSnu extends Component {
   constructor(props) {
@@ -84,8 +87,6 @@ export default class ReadSingleSnu extends Component {
         shouldShowEndModal: true
       });
     }
-
-    // NEXT UP: Build another Modal that shows after the 2nd SNU, explaining the project and linking to the Exposé (Exposé+Author+About all in 1 metapage!)
 
     const tag = tags[Math.floor(Math.random() * tags.length)];
     const candidates = SNUS.filter(snu => snu.tags.includes(tag) && !readSnus.includes(snu.id));
