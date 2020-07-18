@@ -4,23 +4,23 @@ import './ReadSingleSnu.css';
 import * as snus from '../../assets/snus.json';
 import TypeWriter from '../../utils/TypeWriter';
 import TitleAnimator from '../../utils/TitleAnimator';
+import StartModal from '../StartModal';
 import EndModal from '../EndModal';
+import FadeInSection from '../FadeInSection';
 
   // TODO:
-  // HEUTE
-  // - divide json text by /n and let the texts flow in
-  // - Second explanatory modal with link to About
-  // - Feedback: Enable Javascript. Recommended to read on big screen
-    // try disabling Javascript
   // MORGEN
   // - Aboutpage
   //   - Exposé
   //   - about the author
   // -Logik für Texte die selten vorkommen, weil sie kaum oder wenige Tags haben
   // -FIX ID 12 Button bug!!!
-  // - OVERALL DESIGN
   // - Mobile View!
+  // - OVERALL DESIGN
   // - adjust snus
+
+  // FUTURE:
+  // SSR! Why? So that people who have JS disabled can see the page
 
 export default class ReadSingleSnu extends Component {
   constructor(props) {
@@ -30,19 +30,21 @@ export default class ReadSingleSnu extends Component {
     this.getAllTags = this.getAllTags.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
+    this.handleContinue = this.handleContinue.bind(this);
     this.reloadNext = this.reloadNext.bind(this);
     this.state = {
       count: 0,
       id: null,
       title: '',
       firstSentence: '',
-      text: '',
+      text: null,
       tags: [],
       shouldPresentTitle: false,
       shouldPresentFirstSentence: false,
       shouldPresentText: false,
       isFinishedReading: false,
       shouldShowNextButton: false,
+      shouldShowStartModal: false,
       shouldShowEndModal: false,
       uniqueTags: [],
       readSnus: [],
@@ -63,7 +65,7 @@ export default class ReadSingleSnu extends Component {
     
     const id = snu.id;
     const title = snu.title;
-    const text = snu.text;
+    const text = snu.text.split(/\n \n /);
     const firstSentence = snu.firstSentence;
     const tags = snu.tags;
     const updatedReadSnus = [ ...readSnus, snu.id ];
@@ -73,10 +75,20 @@ export default class ReadSingleSnu extends Component {
     this.getAllTags();
   }
 
-  async reloadNext() {
+  async reloadNext(firstTime=false) {
     window.scrollTo(0, 0)
     const { SNUS } = snus;
     const { tags, count, readSnus } = this.state;
+
+    if(!firstTime && readSnus.length === 1) {
+      return await this.setState({
+        shouldPresentTitle: false,
+        shouldPresentFirstSentence: false,
+        shouldPresentText: false,
+        shouldShowNextButton: false,
+        shouldShowStartModal: true
+      });
+    }
 
     if(readSnus.length === 24) {
       return await this.setState({
@@ -111,7 +123,7 @@ export default class ReadSingleSnu extends Component {
       count: count + 1,
       id: newSnu.id,
       title: newSnu.title,
-      text: newSnu.text,
+      text: newSnu.text.split(/\n \n /),
       firstSentence: newSnu.firstSentence,
       tags: newSnu.tags,
       shouldPresentTitle: false,
@@ -120,7 +132,7 @@ export default class ReadSingleSnu extends Component {
       shouldShowNextButton: false,
       readSnus: [ ...readSnus, newSnu.id ]   
     });
-
+    
     this.presentTitle();
   }
 
@@ -182,6 +194,11 @@ export default class ReadSingleSnu extends Component {
     }
   }
 
+  handleContinue() {
+    this.reloadNext(true);
+    this.setState({ shouldShowStartModal: false });
+  }
+
   render() {
     const {
       id,
@@ -193,6 +210,7 @@ export default class ReadSingleSnu extends Component {
       shouldPresentText,
       isFinishedReading,
       shouldShowNextButton,
+      shouldShowStartModal,
       shouldShowEndModal,
       SNUS,
       readSnus
@@ -200,6 +218,7 @@ export default class ReadSingleSnu extends Component {
 
     return (
       <div className="container">
+        <StartModal onContinue={this.handleContinue} show={shouldShowStartModal} className="modalFadeIn"/>
         <EndModal show={shouldShowEndModal} className="modalFadeIn"/>
           <div className={ classNames("snuWrapper", isFinishedReading && "snuFadeOut") }>
             { shouldPresentTitle &&
@@ -223,15 +242,19 @@ export default class ReadSingleSnu extends Component {
             { shouldPresentText &&
             <section className="mainContent">
               <div className="textWrapper">
-                <p className="text">
-                  {text}
-                </p>
+                { text.map((snippet, idx) =>
+                  <FadeInSection key={idx}>
+                    <p className="text">
+                      {text}
+                    </p>
+                  </FadeInSection>
+                ) }
               </div>
               <div className="chapertsWrapper">
                 {SNUS.length > 0 &&
-                  <ul className={classNames("chapters")}>
+                  <div className={classNames("chapters")}>
                     {SNUS.map((snu, idx) =>
-                      <li
+                      <p
                         key={idx}
                         className={classNames(
                           (readSnus.includes(snu.id) && (snu.id !== id)) && "crossedThrough",
@@ -239,9 +262,9 @@ export default class ReadSingleSnu extends Component {
                         )}
                       >
                         {snu.title}
-                      </li>
+                      </p>
                     )}
-                  </ul>
+                  </div>
                 }
               </div>
             </section>

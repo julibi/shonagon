@@ -63,12 +63,11 @@
   text-align: justify
 }
 
-.chapertsWrapper {
+.chaptersWrapper {
   width: 25%;
 }
 
 .chapters {
-  list-style-type: none;
   text-align: right;
   line-height: 1.7;
 }
@@ -78,7 +77,7 @@
 }
 
 .bold {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 18px;
   font-style: sans-serif;
 }
@@ -142,4 +141,3 @@
     transform: translateY(0);
   }
 }
-
