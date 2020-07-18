@@ -1,0 +1,25 @@
+.container {
+  padding: 5em;
+}
+
+.fadeInText {
+  font-size: 24px;
+  line-height: 1.7;
+  hyphens: auto; 
+  text-align: justify;
+  margin-bottom: 2em;
+}
+
+.fadeInText:nth-child(2n+1) {
+  margin-left: 3em;
+} 
+
+.fadeInText:nth-child(5n+3) {
+  margin-right: 3em;
+} 
+
+.code {
+  color: greenyellow;
+  margin: 0 4em;
+}
+
