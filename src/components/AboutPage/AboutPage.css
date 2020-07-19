@@ -1,5 +1,13 @@
 .container {
-  padding: 5em;
+  padding: 5em 20em;
+}
+
+.title {
+  font-size: 60px;
+}
+
+.subTitle {
+  font-size: 40px;
 }
 
 .fadeInText {
@@ -23,3 +31,13 @@
   margin: 0 4em;
 }
 
+.link {
+  color:greenyellow;
+}
+
+.boldified {
+  font-size: 30px;
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.5;
+}

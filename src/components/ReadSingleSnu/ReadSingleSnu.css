@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@600&family=Noto+Sans+KR&display=swap');
+.titleWrapper {
+  padding: 2em;
+}
 
 .container {
-  padding: 5em;
+  padding: 5em 20em;
 }
 
 .snuWrapper {
@@ -60,7 +63,6 @@
   font-size: 24px;
   line-height: 1.7;
   hyphens: auto; 
-  text-align: justify
 }
 
 .chaptersWrapper {

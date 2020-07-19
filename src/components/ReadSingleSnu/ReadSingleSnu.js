@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import classNames from 'classnames';
 import './ReadSingleSnu.css';
 import * as snus from '../../assets/snus.json';
@@ -217,68 +217,72 @@ export default class ReadSingleSnu extends Component {
     } = this.state;
 
     return (
-      <div className="container">
-        <StartModal onContinue={this.handleContinue} show={shouldShowStartModal} className="modalFadeIn"/>
-        <EndModal show={shouldShowEndModal} className="modalFadeIn"/>
-          <div className={ classNames("snuWrapper", isFinishedReading && "snuFadeOut") }>
-            { shouldPresentTitle &&
-              <TitleAnimator
-                className="snuTitle"
-                onFinish={ this.presentFirstSentence }
-              >
-                { title }
-              </TitleAnimator>
-            }
-            { shouldPresentFirstSentence &&
-              <TypeWriter
-                initialClassName="historiatedInitial"
-                textClassName="typedText"
-                hasHistoriatedInitial
-                onFinish={ this.presentText }
-              >
-                { firstSentence }
-              </TypeWriter>
-            }
-            { shouldPresentText &&
-            <section className="mainContent">
-              <div className="textWrapper">
-                { text.map((snippet, idx) =>
-                  <FadeInSection key={idx}>
-                    <p className="text">
-                      {text}
-                    </p>
-                  </FadeInSection>
-                ) }
-              </div>
-              <div className="chapertsWrapper">
-                {SNUS.length > 0 &&
-                  <div className={classNames("chapters")}>
-                    {SNUS.map((snu, idx) =>
-                      <p
-                        key={idx}
-                        className={classNames(
-                          (readSnus.includes(snu.id) && (snu.id !== id)) && "crossedThrough",
-                          snu.id === id && "bold"
-                        )}
-                      >
-                        {snu.title}
+      <Fragment>
+        <div className="titleWrapper">
+          { shouldPresentTitle &&
+                <TitleAnimator
+                  className="snuTitle"
+                  onFinish={ this.presentFirstSentence }
+                >
+                  { title }
+                </TitleAnimator>
+              }
+        </div>
+        <div className="container">
+          <StartModal onContinue={this.handleContinue} show={shouldShowStartModal} className="modalFadeIn"/>
+          <EndModal show={shouldShowEndModal} className="modalFadeIn"/>
+            <div className={ classNames("snuWrapper", isFinishedReading && "snuFadeOut") }>
+              { shouldPresentFirstSentence &&
+                <TypeWriter
+                  initialClassName="historiatedInitial"
+                  textClassName="typedText"
+                  hasHistoriatedInitial
+                  onFinish={ this.presentText }
+                >
+                  { firstSentence }
+                </TypeWriter>
+              }
+              { shouldPresentText &&
+              <section className="mainContent">
+                <div className="textWrapper">
+                  { text.map((snippet, idx) =>
+                    <FadeInSection key={idx}>
+                      <p className="text">
+                        {text}
                       </p>
-                    )}
-                  </div>
-                }
-              </div>
-            </section>
-            }
-          </div>
-        { shouldPresentText && shouldShowNextButton &&
-          <button
-            onClick={ this.handleClick }
-            className={classNames("nextButton", isFinishedReading && "snuFadeOut") }
-          >
-            {"Weiter lesen"}
-          </button>
-        }
-      </div>
+                    </FadeInSection>
+                  ) }
+                </div>
+                <div className="chapertsWrapper">
+                  {SNUS.length > 0 &&
+                    <div className={classNames("chapters")}>
+                      {SNUS.map((snu, idx) =>
+                        <p
+                          key={idx}
+                          className={classNames(
+                            (readSnus.includes(snu.id) && (snu.id !== id)) && "crossedThrough",
+                            snu.id === id && "bold"
+                          )}
+                        >
+                          {snu.title}
+                        </p>
+                      )}
+                    </div>
+                  }
+                </div>
+              </section>
+              }
+            </div>
+          { shouldPresentText && shouldShowNextButton &&
+            <button
+              onClick={ this.handleClick }
+              className={classNames("nextButton", isFinishedReading && "snuFadeOut") }
+            >
+              {"Weiter lesen"}
+            </button>
+          }
+        </div>
+      </Fragment>
     );
   }
 }
