@@ -1,18 +1,39 @@
-
-.finished {
-  animation-name: fadeOutDecrease;
-  animation-duration: 3s;
-  opacity: 0.1;
-  font-size: 300px;
+@media (min-width:320px)  {
+  .finished {
+    animation-name: fadeOutDecrease;
+    animation-duration: 3s;
+    opacity: 0.1;
+    font-size: 100px;
+  }
+  
+  @keyframes fadeOutDecrease {
+    from {
+      opacity: 1;
+      font-size: 200px;
+    }
+    to {
+      opacity: 0.1;
+      font-size: 100px;
+    }
+  }
 }
 
-@keyframes fadeOutDecrease {
-  from {
-    opacity: 1;
-    font-size: 500px;
-  }
-  to {
+@media (min-width:961px)  {
+  .finished {
+    animation-name: fadeOutDecrease;
+    animation-duration: 3s;
     opacity: 0.1;
     font-size: 300px;
+  }
+  
+  @keyframes fadeOutDecrease {
+    from {
+      opacity: 1;
+      font-size: 500px;
+    }
+    to {
+      opacity: 0.1;
+      font-size: 300px;
+    }
   }
 }

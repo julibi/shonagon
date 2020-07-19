@@ -1,63 +1,142 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora&family=Rajdhani:wght@400;600&display=swap');
 
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width:100%;
-  height: 70%;
-  background: rgba(0, 0, 0, 0.2);
-  z-index: 100;
-  backdrop-filter: blur(3px);
-  font-family: 'Lora', sans-serif;
+@media (min-width:320px)  {
+  .modal-main {
+    position:fixed;
+    color: black;
+    background: white;
+    border-radius: 3px;
+    transform: translate(-50%,-50%);
+    overflow: scroll;
+    /* width: 100%; */
+  }
+}
+/* 
+@media (min-width:768px)  {
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    backdrop-filter: blur(3px);
+    font-family: 'Lora', sans-serif;
+  }
+  
+  .modal-main {
+    position:fixed;
+    color: black;
+    background: white;
+    border-radius: 3px;
+    transform: translate(-50%,-50%);
+    overflow: scroll;
+    top:50%;
+    left:50%;
+    width: 80%;
+  }
+  
+  .modal-content-wrapper {
+    margin: 4em;
+    font-size: 20px;
+    line-height: 1.5;
+    text-align: justify;
+  }
+  
+  .display-block {
+    display: block;
+  }
+  
+  .display-none {
+    display: none;
+  }
+  
+  .buttonWrapper {
+    text-align: center;
+  }
+  
+  .confirmationButton {
+    color: white;
+    background-color: black;
+    margin: 0.5em 0.5em 0.5em 0;
+    padding: 8px 16px;
+    border: white 1px solid;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-family: 'Rajdhani', sans-serif;
+    text-decoration: none;
+    animation-name: fadeIn;
+    animation-duration: 3s;
+    cursor: pointer;
+  }
+
 }
 
-.modal-main {
-  position:fixed;
-  color: black;
-  background: white;
-  border-radius: 3px;
-  width: 50%;
-  height: auto;
-  top:50%;
-  left:50%;
-  transform: translate(-50%,-50%);
-  overflow: scroll;
+@media (min-width:961px)  {
+
 }
 
-.modal-content-wrapper {
-  margin: 4em;
-  font-size: 20px;
-  line-height: 1.5;
-  text-align: justify;
+@media (min-width:1200px)  {
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 70%;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    backdrop-filter: blur(3px);
+    font-family: 'Lora', sans-serif;
+  }
+  
+  .modal-main {
+    position:fixed;
+    color: black;
+    background: white;
+    border-radius: 3px;
+    width: 50%;
+    height: auto;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    overflow: scroll;
+  }
+  
+  .modal-content-wrapper {
+    margin: 4em;
+    font-size: 20px;
+    line-height: 1.5;
+    text-align: justify;
+  }
+  
+  .display-block {
+    display: block;
+  }
+  
+  .display-none {
+    display: none;
+  }
+  
+  .buttonWrapper {
+    text-align: center;
+  }
+  
+  .confirmationButton {
+    color: white;
+    background-color: black;
+    margin: 0.5em 0.5em 0.5em 0;
+    padding: 8px 16px;
+    border: white 1px solid;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-family: 'Rajdhani', sans-serif;
+    text-decoration: none;
+    animation-name: fadeIn;
+    animation-duration: 3s;
+    cursor: pointer;
+  }
 }
-
-.display-block {
-  display: block;
-}
-
-.display-none {
-  display: none;
-}
-
-.buttonWrapper {
-  text-align: center;
-}
-
-.confirmationButton {
-  color: white;
-  background-color: black;
-  margin: 0.5em 0.5em 0.5em 0;
-  padding: 8px 16px;
-  border: white 1px solid;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  font-size: 20px;
-  font-family: 'Rajdhani', sans-serif;
-  text-decoration: none;
-  animation-name: fadeIn;
-  animation-duration: 3s;
-  cursor: pointer;
-}
-
+ */

@@ -89,8 +89,119 @@
     margin-left: 1em;
   }
 }
+/* @media (min-width:641px)  { } */
+@media (min-width:768px)  {
+  .menu {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    margin-left: 0;
+    top: 800px;
+    line-height: 3;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 20px;
+    -webkit-transform: rotate(270deg);
+    -webkit-transform-origin: left top;
+    -moz-transform: rotate(270deg);
+    -moz-transform-origin: left top;
+    -ms-transform: rotate(270deg);
+    -ms-transform-origin: left top;
+    -o-transform: rotate(270deg);
+    -o-transform-origin: left top;
+    transform: rotate(270deg);
+  }
+
+  .container {
+    padding: 0 3em 2em 5em;
+  }
+}
 
 @media (min-width:961px)  {
+  .container {
+    padding: 0 10em 5em 10em;
+    font-family: 'Lora', sans-serif;
+  }
+
+  .menu {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    margin-left: 3em;
+    top: 750px;
+    line-height: 3;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 20px;
+    -webkit-transform: rotate(270deg);
+    -webkit-transform-origin: left top;
+    -moz-transform: rotate(270deg);
+    -moz-transform-origin: left top;
+    -ms-transform: rotate(270deg);
+    -ms-transform-origin: left top;
+    -o-transform: rotate(270deg);
+    -o-transform-origin: left top;
+    transform: rotate(270deg);
+  }
+
+  .list {
+    list-style-type: none;
+    white-space: nowrap;
+  }
+
+  .listItem {
+    display: inline;
+    margin-right: 30px;
+  }
+
+  .title {
+    font-size: 60px;
+    margin: 0;
+  }
+
+  .subTitle {
+    font-size: 40px;
+  }
+
+  .fadeInText {
+    font-size: 24px;
+    line-height: 1.7;
+    hyphens: auto; 
+    text-align: justify;
+    margin-bottom: 2em;
+  }
+
+  .fadeInText:nth-child(2n+1) {
+    margin-left: 3em;
+  } 
+
+  .fadeInText:nth-child(5n+3) {
+    margin-right: 3em;
+  } 
+
+  .code {
+    color: greenyellow;
+    margin: 0 4em;
+  }
+
+  .link {
+    color:greenyellow;
+  }
+
+  .boldified {
+    font-size: 30px;
+    font-weight: 600;
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .activeLink {
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  .soulmate {
+    margin-left: 1em;
+  }
+}
+
+@media (min-width:1200px)  {
   .container {
     padding: 5em 20em;
     font-family: 'Lora', sans-serif;
@@ -172,31 +283,5 @@
 
   .soulmate {
     margin-left: 1em;
-  }
-}
-
-/* @media (min-width:641px)  { } */
-@media (min-width:768px)  {
-  .menu {
-    position: -webkit-sticky; /* Safari */
-    position: sticky;
-    margin-left: 0;
-    top: 800px;
-    line-height: 3;
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 20px;
-    -webkit-transform: rotate(270deg);
-    -webkit-transform-origin: left top;
-    -moz-transform: rotate(270deg);
-    -moz-transform-origin: left top;
-    -ms-transform: rotate(270deg);
-    -ms-transform-origin: left top;
-    -o-transform: rotate(270deg);
-    -o-transform-origin: left top;
-    transform: rotate(270deg);
-  }
-
-  .container {
-    padding: 0 3em 2em 5em;
   }
 }

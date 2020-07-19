@@ -11,7 +11,10 @@ import FadeInSection from '../FadeInSection';
   // TODO:
   // -Logik für Texte die selten vorkommen, weil sie kaum oder wenige Tags haben
   // -FIX ID 12 Button bug!!!
-  // - Mobile View!
+  // - About me!
+    // - Mobile View
+    // - Pad view of Snu
+    // - Fix Modals
   // - split long snus
   // - adjust snus
 
@@ -217,16 +220,16 @@ export default class ReadSingleSnu extends Component {
       <Fragment>
         <div className="titleWrapper">
           { shouldPresentTitle &&
-                <TitleAnimator
-                  className="snuTitle"
-                  onFinish={ this.presentFirstSentence }
-                >
-                  { title }
-                </TitleAnimator>
-              }
+            <TitleAnimator
+              className="snuTitle"
+              onFinish={ this.presentFirstSentence }
+            >
+              { title }
+            </TitleAnimator>
+          }
         </div>
-        <div className="container">
-          <StartModal onContinue={this.handleContinue} show={shouldShowStartModal} className="modalFadeIn"/>
+        <div className="snuContainer">
+          <StartModal onContinue={this.handleContinue} show={true} className="modalFadeIn"/>
           <EndModal show={shouldShowEndModal} className="modalFadeIn"/>
             <div className={ classNames("snuWrapper", isFinishedReading && "snuFadeOut") }>
               { shouldPresentFirstSentence &&
@@ -250,7 +253,7 @@ export default class ReadSingleSnu extends Component {
                     </FadeInSection>
                   ) }
                 </div>
-                <div className="chapertsWrapper">
+                <div className="chaptersWrapper">
                   {SNUS.length > 0 &&
                     <div className={classNames("chapters")}>
                       {SNUS.map((snu, idx) => {

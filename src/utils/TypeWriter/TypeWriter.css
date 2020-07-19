@@ -1,6 +1,16 @@
-.TypeWriterWrapper {
-  display: inline-flex;
-  flex-direction: row;
-  align-items: baseline;
-  margin-bottom: 50px;
+@media (min-width:320px)  {
+  .TypeWriterWrapper {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: baseline;
+    margin-bottom: 0;
+  }
+}
+@media (min-width:961px)  {
+  .TypeWriterWrapper {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: baseline;
+    margin-bottom: 50px;
+  }
 }
