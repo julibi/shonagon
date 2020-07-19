@@ -18,7 +18,7 @@ const EndModal = ({ show, className }) => {
           <p className="modal-text">
             {"Wie du siehst, befasse ich mich mit Fusionen von Programmierung und Schreiben. Vielleicht möchtest du mir Feedback geben, oder dich über das Thema austauschen... Drop me a message on "}
             <a href="https://www.xing.com/profile/HyunKyung_Yi4/cv" target="_blank" rel="noopener noreferrer">XING</a>
-            {" or (wenn es sein muss :D) "}
+            {" or (wenn es sein muss "}
             <a href="https://www.facebook.com/jly.aorta" target="_blank" rel="noopener noreferrer">Facebook.</a>
           </p>
         </div>

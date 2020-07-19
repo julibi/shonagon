@@ -9,18 +9,15 @@ import EndModal from '../EndModal';
 import FadeInSection from '../FadeInSection';
 
   // TODO:
-  // MORGEN
-  // - Aboutpage
-  //   - Exposé
-  //   - about the author
   // -Logik für Texte die selten vorkommen, weil sie kaum oder wenige Tags haben
   // -FIX ID 12 Button bug!!!
   // - Mobile View!
-  // - OVERALL DESIGN
   // - adjust snus
+  // - split long snus
 
   // FUTURE:
   // SSR! Why? So that people who have JS disabled can see the page
+  // Englische Version?
 
 export default class ReadSingleSnu extends Component {
   constructor(props) {
@@ -256,17 +253,20 @@ export default class ReadSingleSnu extends Component {
                 <div className="chapertsWrapper">
                   {SNUS.length > 0 &&
                     <div className={classNames("chapters")}>
-                      {SNUS.map((snu, idx) =>
-                        <p
-                          key={idx}
-                          className={classNames(
-                            (readSnus.includes(snu.id) && (snu.id !== id)) && "crossedThrough",
-                            snu.id === id && "bold"
-                          )}
-                        >
-                          {snu.title}
-                        </p>
-                      )}
+                      {SNUS.map((snu, idx) => {
+                        const formattedTitle = snu.id === id ? snu.title.toUpperCase() : snu.title;
+                        return(
+                          <p
+                            key={idx}
+                            className={classNames(
+                              (readSnus.includes(snu.id) && (snu.id !== id)) && "crossedThrough",
+                              snu.id === id && "bold"
+                            )}
+                          >
+                            {formattedTitle}
+                          </p>
+                        );
+                      })}
                     </div>
                   }
                 </div>

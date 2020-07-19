@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@600&family=Noto+Sans+KR&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora&family=Rajdhani:wght@400;600&display=swap');
+
 .titleWrapper {
   padding: 2em;
 }
@@ -59,9 +60,9 @@
 .text {
   color: #ffffff;
   white-space: pre-wrap;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Lora', sans-serif;
   font-size: 24px;
-  line-height: 1.7;
+  line-height: 1.8;
   hyphens: auto; 
 }
 
@@ -72,6 +73,8 @@
 .chapters {
   text-align: right;
   line-height: 1.7;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 20px;
 }
 
 .crossedThrough {
@@ -80,23 +83,23 @@
 
 .bold {
   font-weight: 600;
-  font-size: 18px;
-  font-style: sans-serif;
 }
 
 .nextButton {
-  color: black;
-  background-color: white;
+  color: white;
+  background-color: black;
   margin: 0.5em 0.5em 0.5em 0;
   padding: 8px 16px;
-  border: none;
-  -webkit-border-radius: 28;
-  -moz-border-radius: 28;
-  border-radius: 28px;
-  font-size: 12px;
+  border: white 1px solid;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  font-size: 20px;
+  font-family: 'Rajdhani', sans-serif;
   text-decoration: none;
   animation-name: fadeIn;
   animation-duration: 3s;
+  cursor: pointer;
 }
 
 .modalFadeIn {
