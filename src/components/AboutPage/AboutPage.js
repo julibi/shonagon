@@ -12,7 +12,7 @@ class AboutPage extends Component {
 
   render() {
     return(
-      <Fragment>
+      <div>
         <div className="menu">
           <ul className="list">
           <li className="listItem">
@@ -64,7 +64,6 @@ class AboutPage extends Component {
         <div className="container">
           <div>
             <h1 className="title">{"About"}</h1>
-            <br />
             <br />
             <section
             title="Project"
@@ -142,7 +141,7 @@ class AboutPage extends Component {
                 </div>
                 <p>{"Es liegt auf der Hand einen Fisher-Yates-Shuffle Algorithmus anzuwenden..."}</p>
                 <div className="code">
-                  <p>"chapters[Math.floor(Math.random()*chapters.length)]"</p>
+                  <p>"chapters[Math.floor(Math.random()* chapters.length)]"</p>
                 </div>
                 <p>{"Aber es reizt mich über die reine Zufallsgenerierung hinauszugehen. "}<span className="boldified">{"Wie wäre es, wenn man inhaltlich zusammenhängende Kapitel miteinander verknüpfen könnte, in dem man jedem Text eine Art Subtext verleiht? "}</span>{"Der Leser würde sich weiterhin ahnungslos durch die Geschichte klicken, doch er würde schneller Zusammenhänge entdecken."}
                 </p>
@@ -195,7 +194,7 @@ class AboutPage extends Component {
             </section>
           </div>
         </div>
-      </Fragment>
+      </div>
     );
   };
 };

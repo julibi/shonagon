@@ -12,8 +12,8 @@ import FadeInSection from '../FadeInSection';
   // -Logik für Texte die selten vorkommen, weil sie kaum oder wenige Tags haben
   // -FIX ID 12 Button bug!!!
   // - Mobile View!
-  // - adjust snus
   // - split long snus
+  // - adjust snus
 
   // FUTURE:
   // SSR! Why? So that people who have JS disabled can see the page
