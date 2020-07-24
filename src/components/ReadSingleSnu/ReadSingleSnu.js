@@ -9,12 +9,9 @@ import EndModal from '../EndModal';
 import FadeInSection from '../FadeInSection';
 
   // TODO:
+  // About me responsive
   // -Logik für Texte die selten vorkommen, weil sie kaum oder wenige Tags haben
   // -FIX ID 12 Button bug!!!
-  // - About me!
-    // - Mobile View
-    // - Pad view of Snu
-    // - Fix Modals
   // - split long snus
   // - adjust snus
 
