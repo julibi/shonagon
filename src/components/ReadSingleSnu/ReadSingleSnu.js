@@ -229,53 +229,60 @@ export default class ReadSingleSnu extends Component {
           }
         </div>
         <div className="snuContainer">
-          <StartModal onContinue={this.handleContinue} show={true} className="modalFadeIn"/>
-          <EndModal show={shouldShowEndModal} className="modalFadeIn"/>
-            <div className={ classNames("snuWrapper", isFinishedReading && "snuFadeOut") }>
-              { shouldPresentFirstSentence &&
-                <TypeWriter
-                  initialClassName="historiatedInitial"
-                  textClassName="typedText"
-                  hasHistoriatedInitial
-                  onFinish={ this.presentText }
-                >
-                  { firstSentence }
-                </TypeWriter>
-              }
-              { shouldPresentText &&
-              <section className="mainContent">
-                <div className="textWrapper">
-                  { text.map((snippet, idx) =>
-                    <FadeInSection key={idx}>
-                      <p className="text">
-                        {text}
-                      </p>
-                    </FadeInSection>
-                  ) }
-                </div>
-                <div className="chaptersWrapper">
-                  {SNUS.length > 0 &&
-                    <div className={classNames("chapters")}>
-                      {SNUS.map((snu, idx) => {
-                        const formattedTitle = snu.id === id ? snu.title.toUpperCase() : snu.title;
-                        return(
-                          <p
-                            key={idx}
-                            className={classNames(
-                              (readSnus.includes(snu.id) && (snu.id !== id)) && "crossedThrough",
-                              snu.id === id && "bold"
-                            )}
-                          >
-                            {formattedTitle}
-                          </p>
-                        );
-                      })}
-                    </div>
-                  }
-                </div>
-              </section>
-              }
-            </div>
+        {shouldShowStartModal &&
+          <StartModal
+            onContinue={this.handleContinue}
+            className="modalFadeIn"
+          />
+        }
+        {shouldShowEndModal &&
+          <EndModal className="modalFadeIn"/>
+        }
+          <div className={ classNames("snuWrapper", isFinishedReading && "snuFadeOut") }>
+            { shouldPresentFirstSentence &&
+              <TypeWriter
+                initialClassName="historiatedInitial"
+                textClassName="typedText"
+                hasHistoriatedInitial
+                onFinish={ this.presentText }
+              >
+                { firstSentence }
+              </TypeWriter>
+            }
+            { shouldPresentText &&
+            <section className="mainContent">
+              <div className="textWrapper">
+                { text.map((snippet, idx) =>
+                  <FadeInSection key={idx}>
+                    <p className="text">
+                      {text}
+                    </p>
+                  </FadeInSection>
+                ) }
+              </div>
+              <div className="chaptersWrapper">
+                {SNUS.length > 0 &&
+                  <div className={classNames("chapters")}>
+                    {SNUS.map((snu, idx) => {
+                      const formattedTitle = snu.id === id ? snu.title.toUpperCase() : snu.title;
+                      return(
+                        <p
+                          key={idx}
+                          className={classNames(
+                            (readSnus.includes(snu.id) && (snu.id !== id)) && "crossedThrough",
+                            snu.id === id && "bold"
+                          )}
+                        >
+                          {formattedTitle}
+                        </p>
+                      );
+                    })}
+                  </div>
+                }
+              </div>
+            </section>
+            }
+          </div>
           { shouldPresentText && shouldShowNextButton &&
             <button
               onClick={ this.handleClick }
