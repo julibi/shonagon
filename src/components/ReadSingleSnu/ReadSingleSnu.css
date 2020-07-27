@@ -1,20 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora&family=Rajdhani:wght@400;600&display=swap');
 
-/* TODO */
-/* .snuFadeOut {
-  animation-name: fadeOut;
-  animation-duration: 5s;
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-} */
-
 @media (min-width:320px)  {
   .snuContainer {
     padding: 0 1.5em 2em 1.5em;
@@ -32,7 +17,6 @@
   }
 
   .snuTitle {
-    font-family: 'Lora', sans-serif;
     font-size: 200px;
     position: absolute;
     z-index: 1;
@@ -50,7 +34,6 @@
   }
 
   .typedText {
-    font-family: 'Lora', sans-serif;
     font-size: 30px;
     margin-bottom: 1.5em;
   }
@@ -120,6 +103,15 @@
     padding: 2em;
   }
 
+  .snuTitle {
+    font-size: 300px;
+  }
+
+  .typedText {
+    font-size: 40px;
+    line-height: 1.8;
+  }
+
   .nextButton {
     padding: 4px 8px;
     font-size: 16px;
@@ -127,6 +119,10 @@
 }
 
 @media (min-width:961px)  {
+  .snuTitle {
+    font-size: 500px;
+  }
+
   .textWrapper {
     width: 60%;
   }
@@ -156,10 +152,6 @@
 
   .titleWrapper {
     padding: 4em;
-  }
-
-  .snuTitle {
-    font-size: 500px;
   }
 
   .historiatedInitial {

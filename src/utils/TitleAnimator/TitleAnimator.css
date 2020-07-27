@@ -18,6 +18,26 @@
   }
 }
 
+@media (min-width:768px)  {
+  .finished {
+    animation-name: fadeOutDecrease;
+    animation-duration: 3s;
+    opacity: 0.1;
+    font-size: 200px;
+  }
+  
+  @keyframes fadeOutDecrease {
+    from {
+      opacity: 1;
+      font-size: 300px;
+    }
+    to {
+      opacity: 0.1;
+      font-size: 200px;
+    }
+  }
+}
+
 @media (min-width:961px)  {
   .finished {
     animation-name: fadeOutDecrease;

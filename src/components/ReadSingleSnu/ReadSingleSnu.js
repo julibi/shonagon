@@ -9,14 +9,13 @@ import EndModal from '../EndModal';
 import FadeInSection from '../FadeInSection';
 
   // TODO:
-  // About me responsive
   // -Logik für Texte die selten vorkommen, weil sie kaum oder wenige Tags haben
   // -FIX ID 12 Button bug!!!
-  // - split long snus
-  // - adjust snus
 
   // FUTURE:
-  // SSR! Why? So that people who have JS disabled can see the page
+  // Fix SnuFadeout animation
+  // consider doing a whole new design
+  // SSR! So that people who have JS disabled can see the page
   // Englische Version?
 
 export default class ReadSingleSnu extends Component {
@@ -62,7 +61,7 @@ export default class ReadSingleSnu extends Component {
     
     const id = snu.id;
     const title = snu.title;
-    const text = snu.text.split(/\n \n /);
+    const text = snu.text.split(/\n\n/);
     const firstSentence = snu.firstSentence;
     const tags = snu.tags;
     const updatedReadSnus = [ ...readSnus, snu.id ];
@@ -77,7 +76,7 @@ export default class ReadSingleSnu extends Component {
     const { SNUS } = snus;
     const { tags, count, readSnus } = this.state;
 
-    if(!firstTime && readSnus.length === 1) {
+    if(!firstTime && readSnus.length === 2) {
       return await this.setState({
         shouldPresentTitle: false,
         shouldPresentFirstSentence: false,
@@ -120,7 +119,7 @@ export default class ReadSingleSnu extends Component {
       count: count + 1,
       id: newSnu.id,
       title: newSnu.title,
-      text: newSnu.text.split(/\n \n /),
+      text: newSnu.text.split(/\n\n/),
       firstSentence: newSnu.firstSentence,
       tags: newSnu.tags,
       shouldPresentTitle: false,
@@ -252,7 +251,7 @@ export default class ReadSingleSnu extends Component {
                 { text.map((snippet, idx) =>
                   <FadeInSection key={idx}>
                     <p className="text">
-                      {text}
+                      {snippet}
                     </p>
                   </FadeInSection>
                 ) }

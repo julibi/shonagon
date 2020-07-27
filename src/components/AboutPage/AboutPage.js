@@ -167,11 +167,11 @@ const AboutPage = () => {
             <h2 className="subTitle">{"Über mich"}</h2>
             <FadeInSection className="fadeInText">
               <div className="code">
-                <p>{'"id": Juli Yi'}<br />
+                <p>{'"id": J. Yi'}<br />
                   {'"geboren": "1989"'}<br />
                   {'"uni": "Universität Heidelberg - Ostasienwissenschaften (Japanologie), Universität Hildesheim - Literarisches Schreiben"'}<br />
                   {'"beruf": "Frontend Developer bei XING"'}<br />
-                  {'"schreib_mir": '} <a href="https://www.xing.com/profile/HyunKyung_Yi4/cv" target="_blank" rel="noopener noreferrer" className="link">XING</a>
+                  {'"schreib_mir": '} <a href="https://www.facebook.com/jly.aorta" target="_blank" rel="noopener noreferrer">Facebook</a>
                   </p>
               </div>
             </FadeInSection>
