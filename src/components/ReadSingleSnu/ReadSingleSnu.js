@@ -99,12 +99,10 @@ export default class ReadSingleSnu extends Component {
     let newSnu;
 
     if (candidates.length === 0) {
-      console.log('case 1');
       const unreadSnus = SNUS.filter(snu => !readSnus.includes(snu.id));
       newSnu = unreadSnus[Math.floor(Math.random() * unreadSnus.length)]
     }
     if (candidates.length === 1) {
-      console.log('case 2');
       newSnu = candidates[0]
     }
     if (candidates.length > 1) {
