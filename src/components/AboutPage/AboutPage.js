@@ -171,7 +171,7 @@ const AboutPage = () => {
                   {'"geboren": "1989"'}<br />
                   {'"uni": "Universität Heidelberg - Ostasienwissenschaften (Japanologie), Universität Hildesheim - Literarisches Schreiben"'}<br />
                   {'"beruf": "Frontend Developer bei XING"'}<br />
-                  {'"schreib_mir": '} <a href="https://www.facebook.com/jly.aorta" target="_blank" rel="noopener noreferrer">Facebook</a>
+                  {'"schreib_mir": '} <a href="https://www.facebook.com/jly.aorta" target="_blank" rel="noopener noreferrer" className="styled-link">Facebook</a>
                   </p>
               </div>
             </FadeInSection>

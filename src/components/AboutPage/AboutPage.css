@@ -51,6 +51,11 @@
     margin: 0 2em;
   }
 
+  .styled-link {
+    font-family: 'Rajdhani', sans-serif;
+    color: greenyellow;
+  }
+
   .link {
     color:greenyellow;
   }

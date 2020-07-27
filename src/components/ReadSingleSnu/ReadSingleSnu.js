@@ -9,10 +9,8 @@ import EndModal from '../EndModal';
 import FadeInSection from '../FadeInSection';
 
   // TODO:
-  // -Logik für Texte die selten vorkommen, weil sie kaum oder wenige Tags haben
-  // -FIX ID 12 Button bug!!!
-
-  // FUTURE:
+  // -Logik für Texte die selten vorkommen, weil sie kaum oder wenige Tags haben?
+  // Fix FadeInSection so that it just fades in once
   // Fix SnuFadeout animation
   // consider doing a whole new design
   // SSR! So that people who have JS disabled can see the page
