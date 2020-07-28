@@ -9,6 +9,7 @@ import EndModal from '../EndModal';
 import FadeInSection from '../FadeInSection';
 
   // TODO:
+  // -remove all Redux related stuff
   // -Logik für Texte die selten vorkommen, weil sie kaum oder wenige Tags haben?
   // Fix FadeInSection so that it just fades in once
   // Fix SnuFadeout animation
