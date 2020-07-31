@@ -1,28 +1,10 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from "react-scroll";
-import throttle from 'lodash.throttle';
-import classNames from 'classnames';
 import FadeInSection from '../FadeInSection';
 import './AboutPage.css';
 import '../../assets/soulmate.JPG';
 
 const AboutPage = () => {
-  const [scrollDir, setScrollDir] = useState("down");
-  const [previousScroll, setPreviousScroll] = useState(window.scrollY);
-
-  let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  useEffect(() => {
-    window.addEventListener('scroll', () => {
-      var st = window.pageYOffset || document.documentElement.scrollTop;
-      if (st > lastScrollTop){
-        setScrollDir("down");
-      } else {
-        setScrollDir("up");
-      }
-      lastScrollTop = st <= 0 ? 0 : st;
-    });
-  }, []);
-  console.log(scrollDir)
   return(
     <div>
       <div className="menu">
@@ -82,29 +64,29 @@ const AboutPage = () => {
           id="Project"
           >
             <h2 className="subTitle">{"Über das Projekt"}</h2>
-            <FadeInSection className="fadeInText" shouldFade={scrollDir === "down"}>
+            <FadeInSection className="fadeInText">
               <p>{"Shanghai Shônagon ist der Arbeitstitel meines Romanprojekts, das ich während meines Studiums des Literarischen Schreibens an der Universität Hildesheim geschrieben habe. Im Rahmen der Masterarbeit habe ich das Grundgerüst einer simplen App programmiert, die es ermöglicht, die Erzähleinheiten des Romans dynamisch nonlinear zu lesen - also "}<span className="boldified">{"eine nonlineare Storytelling-App."}</span></p>
             </FadeInSection>
-            <FadeInSection className="fadeInText" shouldFade={scrollDir === "down"}>
+            <FadeInSection className="fadeInText">
               <p>{"Unter nonlinearer Narration werden oft Romane verstanden, in denen Erzähleinheiten in nicht-chronologischer Reihenfolge erfolgen, also in einer Reihenfolge, welche die erzählte Zeit nicht exakt abbildet. Ich meine mit nonlinear allerdings eine Erweiterung ihres herkömmlichen Begriffs und zwar eine Erzählweise, in der es keinerlei Fixierung einer Reihenfolge gibt. Die Reihenfolge ergibt sich dynamisch, zum eine Teil durch Zufall und zum anderen durch einen simplen Algorithmus – aber dazu kommen wir später."}</p>
             </FadeInSection>
-            <FadeInSection className="fadeInText" shouldFade={scrollDir === "down"}>
+            <FadeInSection className="fadeInText">
               <p>{"Ein nonlineares Werk, das mich fasziniert hat, ist "}<span className="boldified">{"Tristano, „ein“ Roman von Nanni Balestrini der 1964 "}</span>{"erschienen ist. Balestrini selbst ging es vermutlich weniger um die Nonlinearität, sondern um die computergenerierte Zufallskombination von Text und der Technik der Montage als Gegenbewegung zum literarischen Etablissement. Er fragmentierte fremde Texte und durchmischte sie mithilfe des Computers."}</p>
               <br />
               <p>{"Zwar hat Ballestrini ein paar Hinweise auf seine eigene Biographie in dem Text verwoben, dennoch bleibt es schwer auszumachen, worum es in der Geschichte geht, wenn man denn überhaupt von einer Geschichte im herkömmlichen Sine sprechen kann. Jede Ausgabe von Tristano ist eine von 109.027.350432.000 möglichen Anordnung der Sätze. Die Ausgabe, die ich besitze, trägt die Nummer 7.615 und ist somit wie alle anderen Ausgaben einzigartig."}</p>
             </FadeInSection>
-            <FadeInSection className="fadeInText" shouldFade={scrollDir === "down"}>
+            <FadeInSection className="fadeInText">
               <p>{"Tristano hat bei der Lektüre einen besonderen Reiz, obwohl man ca. die ersten 20 Seiten im Dunkeln tappt, da sich kein Inhalt für den Leser erschließt. Ab und zu tritt ein „Ich“ auf, noch öfter ein „C“. Versuche „C“ zu identifizieren sind vergeblich, da es mal weiblich, männlich oder sachlich. Doch allmählich wird man vertrauter mit der „Geschichte“. Es handelt von einem Paar, das eine Affäre hat und sich im Hotel am Strand trifft. Es geht um Geldsorgen und Bestechung. Man mäandert durch den Alltag dieser beiden Nichtstuer. Sie liegen viel im Bett herum, spazieren an der Promenade, telefonieren und durchqueren Räume. Durchsetzt ist dieses Setting von – warum auch immer – Auszügen aus Berichten zu Urmenschfunden in Höhlen. Durch Zufall ergeben sich sprachliche Sequenzen, die Satzzusammenhänge erzeugen und gewisse Sätze in Tristano wiederholen sich immer wieder. Diese Wiederholungen und zufälligen Zusammenhänge verstärken das fast instinktive Bedürfnis den Text unbedingt verstehen und einen Zusammenhang herstellen zu wollen. Während dieser Drang einem vor Augen führt, wie schwer es ist einen gänzlich unkonventionellen Text zu verfassen und vor allem zu lesen, macht er auch den besonderen Reiz von Tristano aus."}
               </p>
             </FadeInSection>
-            <FadeInSection className="fadeInText" shouldFade={scrollDir === "down"}>
+            <FadeInSection className="fadeInText">
               <p>{"Narrativ betrachtet ist Tristano zwar nonlinear, doch das Konzept scheint seiner Zeit voraus zu sein: das Format des Buches lässt die technische Nonlinearität nicht zu. Es gibt noch heutzutage Versuche die Nonlinearität auf das Buch anzuwenden, so wie Francis Neniks 2012 veröffentlichtes XO. Dieses „Buch“ hat keinen Buchrücken, sondern die Seiten liegen lose in einer Schachtel. Seiten, die zusammengehören, weil sie einen Sinnabschnitt bilden, sind anstatt mit Seitenzahlen mit gleichen Symbolen markiert. Es kommt einem als Leser fast vor, als würde es einen auffordern, XO über Raum und Zeit verstreuen. Die Geschichte wird aus seiner Form – dem Buch – befreit wie eine Seele aus seinem Körper."}
               </p>
             </FadeInSection>
-            <FadeInSection className="fadeInText" shouldFade={scrollDir === "down"}>
+            <FadeInSection className="fadeInText">
               <p>{"Doch auch hier wirkt das Konzept der nonlinearen Erzählung in dem Körper des Buches gefangen. Dabei ist mit dem "}<span className="boldified"> {"Web das nonlineare Medium aufgetreten, welches eine technische Nonlinearität endlich zulässt. "}</span>{"Es hat das Potenzial den Roman aus seinem starren Format herauszulösen und ihm eine technische Dynamik einzuhauchen. Mich fasziniert die Vorstellung zu beobachten, in was er sich verwandeln kann. Nonlineare Erzählweise und ihren Reiz, wie er in Werken wie Tristano vorhanden ist, in einer Web-App zu erzeugen – das war das Ziel meiner Masterarbeit."}</p>
             </FadeInSection>
-            <FadeInSection className="fadeInText" shouldFade={scrollDir === "down"}>
+            <FadeInSection className="fadeInText">
               <p><span className="boldified">{"Ich bin nicht von selbst auf die Idee gekommen meine Geschichte nonlinear aufzuarbeiten. Sie ist auch nicht neu. "}</span>{"Eine große Inspiration war das "}<span className="boldified"><a href="http://korsakow.com/" target="_blank" rel="noopener noreferrer">{"Korsakow-Projekt. "}</a></span>{"Ich wollte es mit Shanghai Shônagon ausprobieren, weil ich glaube, dass das Setting, der Rythmus der Geschichte und der Stil sich für ein solches systematisches Shuffling eignet. Ich habe dafür das Romanprojekt nicht umgeschrieben, damit es sich nonlinear besser lesen lässt. Zwei Gründe habe ich dafür: 1) Es ist ein Experiment. 2) Es wäre viel zu viel Arbeit (Fulltime job, hallo). Worum geht es dann eigentlich in dem Roman?"}
               </p>
             </FadeInSection>
@@ -182,7 +164,7 @@ const AboutPage = () => {
             id="Aboutme"
           >
             <h2 className="subTitle">{"Über mich"}</h2>
-            <FadeInSection className="fadeInText" shouldFade={scrollDir === "down"}>
+            <FadeInSection className="fadeInText">
               <div className="code">
                 <p>{'"id": J. Yi'}<br />
                   {'"geboren": "1989"'}<br />
@@ -192,14 +174,14 @@ const AboutPage = () => {
                   </p>
               </div>
             </FadeInSection>
-            <FadeInSection className="fadeInText" shouldFade={scrollDir === "down"}>
+            <FadeInSection className="fadeInText">
               <img
                 src={require('../../assets/soulmate.JPG')}
                 alt="soulmate"
                 className="soulmate"  
               />
             </FadeInSection>
-            <FadeInSection className="fadeInText" shouldFade={scrollDir === "down"}>
+            <FadeInSection className="fadeInText">
               <p>{"Cheers."}</p>
             </FadeInSection>
           </section>

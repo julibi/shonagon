@@ -11,7 +11,6 @@ import FadeInSection from '../FadeInSection';
   // TODO:
   // -remove all Redux related stuff
   // -Logik für Texte die selten vorkommen, weil sie kaum oder wenige Tags haben?
-  // Fix FadeInSection so that it just fades in once
   // Fix SnuFadeout animation
   // consider doing a whole new design
   // SSR! So that people who have JS disabled can see the page
@@ -182,7 +181,6 @@ export default class ReadSingleSnu extends Component {
   }
 
   handleScroll() {
-    console.log(window);
     if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 5)) {
       this.setState({ shouldShowNextButton: true });
     }
