@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-scroll";
-import FadeInSection from '../FadeInSection';
+import FadeInSection from '../../utils/FadeInSection';
 import './AboutPage.css';
 import '../../assets/soulmate.JPG';
 

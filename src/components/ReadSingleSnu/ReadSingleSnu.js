@@ -6,10 +6,9 @@ import TypeWriter from '../../utils/TypeWriter';
 import TitleAnimator from '../../utils/TitleAnimator';
 import StartModal from '../StartModal';
 import EndModal from '../EndModal';
-import FadeInSection from '../FadeInSection';
+import FadeInSection from '../../utils/FadeInSection';
 
   // TODO:
-  // -remove all Redux related stuff
   // -Logik für Texte die selten vorkommen, weil sie kaum oder wenige Tags haben?
   // Fix SnuFadeout animation
   // consider doing a whole new design
@@ -106,7 +105,6 @@ export default class ReadSingleSnu extends Component {
       newSnu = candidates[0]
     }
     if (candidates.length > 1) {
-      console.log('case 3');
       newSnu = candidates[Math.floor(Math.random() * candidates.length)];
     }
 
