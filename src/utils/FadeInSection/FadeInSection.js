@@ -34,7 +34,8 @@ const FadeInSection = ({ className, children }) => {
   return (
     <div
       className={classNames(
-        className, 
+        className,
+        "fadeInText", 
         shouldFade && "fade-in-section",
         isVisible && "is-visible"
       )}
