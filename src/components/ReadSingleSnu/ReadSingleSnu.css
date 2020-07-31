@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora&family=Rajdhani:wght@400;600&display=swap');
 
 @media (min-width:320px)  {
-  .snuContainer {
+  .snuWrapper {
     padding: 0 1.5em 2em 1.5em;
   }
 
-  .snuWrapper {
+  .snu {
     display: flex;
     flex-direction: column;
   }
@@ -69,6 +69,7 @@
 
   .bold {
     font-weight: 600;
+    color: white;
   }
 
   .nextButton {
@@ -95,7 +96,7 @@
 }
 
 @media (min-width:768px)  {
-  .snuContainer {
+  .snuWrapper {
     padding: 0 5em 3em 5em;
   }
 
@@ -137,6 +138,7 @@
     line-height: 1.5;
     font-family: 'Rajdhani', sans-serif;
     font-size: 18px;
+    color: grey;
   }
 
   .chaptersWrapper {
@@ -146,7 +148,7 @@
 }
 
 @media (min-width:1200px)  {
-  .snuContainer {
+  .snuWrapper {
     padding: 5em 20em;
   }
 

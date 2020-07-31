@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import classNames from 'classnames';
 import './FadeInSection.css';
 
-const FadeInSection = ({ className, children }) => {
+const FadeInSection = ({ isAboutPage = false, className, children }) => {
   const [isVisible, setVisible] = useState(true);
   const [shouldFade, setShouldFade] = useState(true); 
   const domRef = useRef();
@@ -35,7 +35,7 @@ const FadeInSection = ({ className, children }) => {
     <div
       className={classNames(
         className,
-        "fadeInText", 
+        isAboutPage && "fadeInText", 
         shouldFade && "fade-in-section",
         isVisible && "is-visible"
       )}

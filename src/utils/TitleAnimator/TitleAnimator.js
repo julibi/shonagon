@@ -22,14 +22,14 @@ export default class TitleAnimator extends Component {
     if (!animatedTitle.length && !count) {
       this.setState({ animatedTitle: initialAnimatedTitle });
     }
-    setTimeout(() => this.changeLetter(), 3000);
+    setTimeout(() => this.changeLetter(), 500);
   }
 
   changeLetter() {
     const { alphabet, originalTitle, animatedTitle, count, lowercaseOriginalTitle } = this.state;
 
     // TODO: check if the first possible condition can ever be true…
-    if (lowercaseOriginalTitle === animatedTitle || count > 60) {
+    if (lowercaseOriginalTitle === animatedTitle || count > 55) {
       this.setState({
         animatedTitle: originalTitle,
         isFinished: true
@@ -44,7 +44,7 @@ export default class TitleAnimator extends Component {
       .join('');
     
     this.setState({ animatedTitle: updatedAnimatedTitle, count: count + 1});
-    setTimeout(() => this.changeLetter(), 80);
+    setTimeout(() => this.changeLetter(), 70);
   }
 
   render() {

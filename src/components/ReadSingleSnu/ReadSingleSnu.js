@@ -55,7 +55,7 @@ export default class ReadSingleSnu extends Component {
     } else {
       snu = SNUS[Math.floor(Math.random() * SNUS.length)];
     }
-    
+
     const id = snu.id;
     const title = snu.title;
     const text = snu.text.split(/\n\n/);
@@ -122,7 +122,7 @@ export default class ReadSingleSnu extends Component {
       shouldShowNextButton: false,
       readSnus: [ ...readSnus, newSnu.id ]   
     });
-    
+
     this.presentTitle();
   }
 
@@ -179,18 +179,9 @@ export default class ReadSingleSnu extends Component {
   }
 
   handleScroll() {
-    if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 5)) {
+    if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 400)) {
       this.setState({ shouldShowNextButton: true });
     }
-   
-    // const test = window.currentTarget;
-
-    // if (this.prev > test.scrollY) {
-    //     console.log("scrolling up");
-    // } else if (this.prev < test.scrollY) {
-    //     console.log("scrolling down");
-    // }
-    // this.prev = test.scrollY;
   }
 
   handleContinue() {
@@ -214,7 +205,7 @@ export default class ReadSingleSnu extends Component {
       SNUS,
       readSnus
     } = this.state;
-
+  
     return (
       <Fragment>
         <div className="titleWrapper">
@@ -227,7 +218,7 @@ export default class ReadSingleSnu extends Component {
             </TitleAnimator>
           }
         </div>
-        <div className="snuContainer">
+        <div className="snuWrapper">
         {shouldShowStartModal &&
           <StartModal
             onContinue={this.handleContinue}
@@ -237,7 +228,7 @@ export default class ReadSingleSnu extends Component {
         {shouldShowEndModal &&
           <EndModal className="modalFadeIn"/>
         }
-          <div className={ classNames("snuWrapper", isFinishedReading && "snuFadeOut") }>
+          <div className={ classNames("snu", isFinishedReading && "snuFadeOut") }>
             { shouldPresentFirstSentence &&
               <TypeWriter
                 initialClassName="historiatedInitial"
@@ -258,6 +249,14 @@ export default class ReadSingleSnu extends Component {
                     </p>
                   </FadeInSection>
                 ) }
+                { shouldPresentText && shouldShowNextButton &&
+                <button
+                  onClick={ this.handleClick }
+                  className={classNames("nextButton", isFinishedReading && "snuFadeOut") }
+                >
+                  {"Weiter lesen"}
+                </button>
+              }
               </div>
               <div className="chaptersWrapper">
                 {SNUS.length > 0 &&
@@ -282,14 +281,6 @@ export default class ReadSingleSnu extends Component {
             </section>
             }
           </div>
-          { shouldPresentText && shouldShowNextButton &&
-            <button
-              onClick={ this.handleClick }
-              className={classNames("nextButton", isFinishedReading && "snuFadeOut") }
-            >
-              {"Weiter lesen"}
-            </button>
-          }
         </div>
       </Fragment>
     );

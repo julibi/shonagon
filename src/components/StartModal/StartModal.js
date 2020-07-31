@@ -11,7 +11,7 @@ const StartModal = ({ className, onContinue }) => {
           {"Shanghai Shônagon"}
         </h2> 
         <p className="start-modal-text">
-          {"Shanghai Shônagon ist ein Romanprojekt. Du liest die ersten Kapitel in einer dynamisch erstellten Reihenfolge. Sie beruht zur einen Hälfte auf Zufall und zur anderen auf inhaltlichen Zusammenhängen. Mehr Informationen zum Algorithmus findest du "}
+          {"Shanghai Shônagon ist ein Romanprojekt. Du liest die ersten 24 Kapitel in einer dynamisch erstellten Reihenfolge. Sie beruht zur einen Hälfte auf Zufall und zur anderen auf inhaltlichen Zusammenhängen. Mehr Informationen zum Algorithmus findest du "}
           <Link to="/about" target="_blank">hier. </Link>
           {"(Achtung! Auf der Seite, zu die der Link führt, sind Spoiler enthalten.)"}
         </p>
