@@ -182,9 +182,19 @@ export default class ReadSingleSnu extends Component {
   }
 
   handleScroll() {
+    console.log(window);
     if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 5)) {
       this.setState({ shouldShowNextButton: true });
     }
+   
+    // const test = window.currentTarget;
+
+    // if (this.prev > test.scrollY) {
+    //     console.log("scrolling up");
+    // } else if (this.prev < test.scrollY) {
+    //     console.log("scrolling down");
+    // }
+    // this.prev = test.scrollY;
   }
 
   handleContinue() {
