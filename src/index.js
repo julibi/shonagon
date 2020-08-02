@@ -10,8 +10,8 @@ import registerServiceWorker from './registerServiceWorker';
 const App = () => (
     <Router>
       <Switch>
-        <Route exact path={`${process.env.APP_URL}/`} component={ReadSingleSnuContainer} />
-        <Route exact path={`${process.env.APP_URL}/about`} component={AboutPage} />
+        <Route exact path="shanghaishonagon.com" component={ReadSingleSnuContainer} />
+        <Route exact path="shanghaishonagon.com/about" component={AboutPage} />
       </Switch>
     </Router>
 );
